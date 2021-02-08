@@ -59,29 +59,29 @@ router.post("/",mw, async (req,res)=>{
 
     await user.save() //anything that returns promise use await
 
-    //Return json webtoken
+    //Return json webtoken   [header].[payload].[signature]
 
+    //Lets create the payload object to include
     const payload = {
         user:{
-            id:user.id
+            id:user.id,
+            ac:"chumma value"
         }
     }
 
-    console.log("--------1");
+    //Create and sign the token
     jwt.sign(
         payload,
         config.get('jwtSecret'),
-        {expiresIn:360000},
+        {expiresIn:config.get('tokenExpiry')}, //Expires in values is in seconds, Set to high for testing. Reduce it to (1 hr ?) before deploying to prod env
         (err,token)=>{
             if(err){
                 throw err;
             }
             else{
-                console.log("--------2");
                 res.json({token});
             }
         });
-
 
     }catch(err){
         console.log("Server Error");

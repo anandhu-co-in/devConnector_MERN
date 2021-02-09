@@ -8,11 +8,13 @@ const config=require('config');
 const bcrypt=require('bcryptjs');
 const {check,validationResult} = require('express-validator/check');
 
+const validateToken=require('../../middlewear/validatetoken');
+
 
 //API --> GET auth, Returns user details when requested with a valid token
 
 
-router.get("/",validator,async (req,res)=>{
+router.get("/",validateToken,async (req,res)=>{
     //after middlewear has validated the jwt, we reach here.
     //send back the user details
     try{
@@ -93,40 +95,5 @@ router.post("/",mw, async (req,res)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports=router; 
 
-   //Middlewar function to validate the token 
-function validator(req,res,next){
-
-    //get the token from request
-    const token=req.header('x-auth-token');
-
-    if(!token){
-        return res.status(401).json({msg:'No token, authorization denied'});
-    }
-
-     
-    //Verify token, if verification fails, will go to catch block
-    try{
-        const decoded=jwt.verify(token, config.get('jwtSecret'));
-        req.user=decoded.user;
-        next();
-    }
-    catch(err){
-        console.log(err);
-        return res.status(401).json({msg:'Token is not valid'});
-    }
-}

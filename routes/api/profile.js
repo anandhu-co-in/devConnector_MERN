@@ -4,13 +4,14 @@ const tokenValidator=require("../../middlewear/validatetoken");
 const userModel=require("../../models/user");
 const profileModel=require("../../models/profile");
 
-const {check,validationResult} = require('express-validator/check');
+const {check,validationResult} = require("express-validator");
 
 
 
 //@route GET api/profile/me
 //@desc  Get current users profile
 //@access Private
+
 
 router.get("/me",tokenValidator,async (req,res)=>{
     //Here because the token is valid
@@ -19,7 +20,7 @@ router.get("/me",tokenValidator,async (req,res)=>{
         //Get the user profile matching the id
 
         const profile= await profileModel.findOne({user:req.user.id}).populate('user',['name','avatar']); // {user:req.user.id} used to filter one record from profile model(it has user field) with user field value same as the one in request
-                                                                    //Investigate the populate part
+                                                                    //Investigate the populate part --> user filed is a lookup, from the target take name and avatart and populate in user
         if(!profile){
             return res.status(400).json({msg:'There is no profile for this user'});     
         }
@@ -86,7 +87,7 @@ router.post("/",mw,async (req,res)=>{
                 {$set:profileFields},
                 {new:true} //new true to return new document after update 
                 );
-                return res.json(profileFields); 
+                return res.json(profile); 
         }
 
         //We are here is profile not already existing, then just add it to db
@@ -101,6 +102,258 @@ router.post("/",mw,async (req,res)=>{
     }
 
 })
+
+
+//@route GET api/profile
+//@desc  Get All profiles
+//@access Public
+
+
+router.get('/',async (req,res)=>{
+    try{
+        const profiles=await profileModel.find().populate('user',['name','avatar']);
+        res.json(profiles);
+    }
+    catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+
+//@route GET api/profile/user/:user_id
+//@desc  Get All profiles
+//@access Public
+
+
+router.get('/user/:user_id',async (req,res)=>{
+    try{
+        console.log(req.params.user_id)
+        const profiles=await profileModel.findOne({user:req.params.user_id}).populate('user',['name','avatar']);
+
+        if(!profiles){
+            return res.status(400).json({msg:'There is no profile for this user'});     
+        }
+        
+        console.log(profiles)
+        res.json(profiles);
+    }
+    catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+
+
+//@route DELETE 
+//@desc  Delete profile
+//@access Private
+
+router.delete('/',tokenValidator,async (req,res)=>{
+    try{
+        //Remove profile
+
+        console.log(req.user.id)
+        await profileModel.findOneAndRemove({user:req.user.id});
+
+        await userModel.findOneAndRemove({_id:req.user.id});
+
+        res.json({msg:"User deleted"});
+    }
+    catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+
+
+//@route PUT api/profile/experience 
+//@desc  Add profile experience
+//@access Private
+
+mw=[
+    tokenValidator,
+    check('title','Title is requried').not().notEmpty(),
+    check('company','Company is requried').not().notEmpty(),
+    check('from','From date is requried').not().notEmpty(),
+] 
+
+
+router.put("/experience",mw,async (req,res)=>{
+
+    const errors=validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()});
+    }
+
+    const {title,company,location,from,to,current,description} = req.body;
+    const newExp={title,company,location,from,to,current,description};
+
+    try {
+        const profile = await profileModel.findOne({user:req.user.id});
+        profile.experience.unshift(newExp);
+        await profile.save()
+        res.json(profile);
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send('Server Error');
+    }
+
+
+});
+
+
+
+//@route DELETE api/profile/experience 
+//@desc  Delete profile experience
+//@access Private
+
+mw=[
+    tokenValidator
+] 
+
+router.delete("/experience/:ex_id",mw,async (req,res)=>{
+
+    try {
+        //Find the profile
+        const profile=await profileModel.findOne({user:req.user.id});
+
+        //Inside the profile, inside its experience array, find the location of the exp id in the request
+        const removeIndex=profile.experience.map(item=>item.id).indexOf(req.params.ex_id);
+
+        if(removeIndex<0)
+            return res.status(500).send({msg:'Failed to remove experience'});
+        
+        
+        //Remove one array element from that index, it it will delete that experience
+        profile.experience.splice(removeIndex,1)
+
+        await profile.save();
+
+        res.json(profile);
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send('Server Error');
+    }
+
+
+});
+
+
+///////////////////
+
+
+
+//@route PUT api/profile/education 
+//@desc  Add profile education
+//@access Private
+
+mw=[
+    tokenValidator,
+    check('school','School is requried').not().notEmpty(),
+    check('degree','Degree is requried').not().notEmpty(),
+    check('fieldofstudy','Field of study is requried').not().notEmpty(),
+    check('from','From date is requried').not().notEmpty(),
+] 
+
+router.put("/education",mw,async (req,res)=>{
+
+    const errors=validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()});
+    }
+
+    const {school,degree,fieldofstudy,from,to,current,description} = req.body;
+    const newEdu={school,degree,fieldofstudy,from,to,current,description};
+
+    try {
+        const profile = await profileModel.findOne({user:req.user.id});
+        profile.education.unshift(newEdu);
+        await profile.save()
+        res.json(profile);
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send('Server Error');
+    }
+
+
+});
+
+
+
+//@route DELETE api/profile/education 
+//@desc  Delete profile education
+//@access Private
+
+mw=[
+    tokenValidator
+] 
+
+router.delete("/education/:ed_id",mw,async (req,res)=>{
+
+    try {
+        //Find the profile
+        const profile=await profileModel.findOne({user:req.user.id});
+
+        //Inside the profile, inside its education array, find the location of the exp id in the request
+        const removeIndex=profile.education.map(item=>item.id).indexOf(req.params.ed_id);
+
+        if(removeIndex<0)
+            return res.status(500).send({msg:'Failed to remove Education'});
+        
+        
+        //Remove one array element from that index, it it will delete that education
+        profile.education.splice(removeIndex,1)
+
+        await profile.save();
+
+        res.json(profile);
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send('Server Error');
+    }
+
+
+});
+
+
+
+
+//@route GET api/profile/github/:username
+//@desc  Get repos from a github user
+//@access Public
+
+
+router.get('/github/:username',async (req,res)=>{
+    try{
+        console.log(req.params.user_id)
+        const profiles=await profileModel.findOne({user:req.params.user_id}).populate('user',['name','avatar']);
+
+        if(!profiles){
+            return res.status(400).json({msg:'There is no profile for this user'});     
+        }
+        
+        console.log(profiles)
+        res.json(profiles);
+    }
+    catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+
+
+
+
+
+
 
 
 

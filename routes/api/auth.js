@@ -19,6 +19,10 @@ router.get("/",validateToken,async (req,res)=>{
     //send back the user details
     try{
         const user=await usermodel.findById(req.user.id).select('-password') //Removed password from the document
+
+        if(!user){
+            return res.status(400).json({msg:"User doesnt exists"});
+        }
         res.json(user);
     }
     catch(err){

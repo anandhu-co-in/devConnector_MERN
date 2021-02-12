@@ -52,6 +52,9 @@ const ProfileSchema=new mongoose.Schema({
             },
             to:{
                 type:Date,
+            },
+            description:{
+                type:String
             }
         }
   

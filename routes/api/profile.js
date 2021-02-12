@@ -5,7 +5,8 @@ const userModel=require("../../models/user");
 const profileModel=require("../../models/profile");
 
 const {check,validationResult} = require("express-validator");
-
+const axios=require('axios');
+const config=require('config');
 
 
 //@route GET api/profile/me
@@ -331,15 +332,31 @@ router.delete("/education/:ed_id",mw,async (req,res)=>{
 
 router.get('/github/:username',async (req,res)=>{
     try{
-        console.log(req.params.user_id)
-        const profiles=await profileModel.findOne({user:req.params.user_id}).populate('user',['name','avatar']);
 
-        if(!profiles){
-            return res.status(400).json({msg:'There is no profile for this user'});     
-        }
-        
-        console.log(profiles)
-        res.json(profiles);
+        // const options={
+        //     uri:encodeURI(`https://api.github.com/user/${req.params.username}/repos?per_page=5&sort=created:asc`),
+        //     method:'GET',
+        //     headers:{
+        //         'user-agent' : 'node.js',
+        //         Authorization: `token 4a07c4ef27a94db0ad0e6f0f75c7a1608c41d566`
+        //     }
+        // }
+
+        //above code was deprecated, so i got the updated code from brads repo, https://github.com/bradtraversy/devconnector_2.0#changes-to-github-api-authentication
+        //as per the link, request is also deprecated, so used axios :
+
+        const uri = encodeURI(
+            `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+          );
+          const headers = {
+            'user-agent': 'node.js',
+            Authorization: `token ${config.get('githubtoken')}`
+          };
+          
+
+        const gitHubResponse = await axios.get(uri, { headers });
+        res.json(gitHubResponse.data);//Seems like gitHubResponse.data is already in json, i tried to parse json from it, which gave error
+
     }
     catch(err){
         console.error(err.message);

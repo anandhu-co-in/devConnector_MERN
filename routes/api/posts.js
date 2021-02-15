@@ -335,5 +335,10 @@ router.delete('/comment/:id/:comment_id',tokenValidator,async(req,res)=>{
 
 });
 
-
 module.exports=router;
+
+
+//Future updates
+
+//1)Edit comments
+//2)Like comments

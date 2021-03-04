@@ -5,11 +5,12 @@ import {PropTypes} from 'prop-types'
 //redux
 import {connect} from 'react-redux'
 import {setAlert} from '../../redux/actions/alert'
+import {register} from '../../redux/actions/auth'
 
 
 import axios from 'axios'
 
-const Register = ({setAlert}) => {
+const Register = ({setAlert,register}) => {
 
 
     const [formData,setFormData]=useState({
@@ -38,28 +39,31 @@ const Register = ({setAlert}) => {
         else{
             console.log("passwords match");
 
-            const newUser={
-                name,
-                email,
-                password
-            }
 
-            try {
+            register({name,email,password});
+
+            // const newUser={
+            //     name,
+            //     email,
+            //     password
+            // }
+
+            // try {
                 
-                const config={
-                    headers:{
-                        'Content-Type':'application/json'
-                    }
-                 }
+            //     const config={
+            //         headers:{
+            //             'Content-Type':'application/json'
+            //         }
+            //      }
 
-                const body=JSON.stringify(newUser);
+            //     const body=JSON.stringify(newUser);
 
-                const res = await axios.post('/api/users',body,config) //starting from /api/ since we added proxy
-                console.log(res.data)
+            //     const res = await axios.post('/api/users',body,config) //starting from /api/ since we added proxy
+            //     console.log(res.data)
 
-            } catch (error) {
+            // } catch (error) {
                 
-            }
+            // }
 
         }
     }
@@ -75,7 +79,7 @@ const Register = ({setAlert}) => {
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
       <form className="form" onSubmit={e=>onSubmit(e)}>
         <div className="form-group">
-          <input type="text" placeholder="Name" name="name" value={formData.name} onChange={e=>handleChange(e)} required />
+          <input type="text" placeholder="Name" name="name" value={formData.name} onChange={e=>handleChange(e)} />
         </div>
         <div className="form-group">
           <input type="email" placeholder="Email Address" name="email" value={formData.email} onChange={e=>handleChange(e)} />
@@ -114,12 +118,13 @@ const Register = ({setAlert}) => {
 
 
 Register.propTypes={
-  setAlert:PropTypes.func.isRequired
+  setAlert:PropTypes.func.isRequired,
+  register:PropTypes.func.isRequired
 }
 
 
 {/* export default Register */}
 {/*Chaged to below one to connect to redux  */}
-export default connect(null,{setAlert})(Register)
+export default connect(null,{setAlert,register})(Register)
  {/*null in place of mapStateToProps, which we dont use in this case, we only call action from this component  */}
 

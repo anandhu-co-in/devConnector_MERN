@@ -1,5 +1,5 @@
 import './App.css';
-import React,{Fragment} from 'react'
+import React,{Fragment,useEffect} from 'react'
 import Landing from './components/layouts/Landing.js'
 import Navbar from './components/layouts/Navbar.js'
 import Login from './components/auth/Login.js'
@@ -10,14 +10,31 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import Alert from './components/layouts/Alert';
+import {loadUser} from './redux/actions/auth'
+import setAuthToken from './redux/utilities/setAuthToken'
 
 
+//If token exists in locas storage set it to axios headers'  'x-auth-token"
+if(localStorage.token){
+      setAuthToken(localStorage.token)
+  }
+
+
+
+
+const App = () =>{
+
+//using useeffects call load user once the app loads, []at the end makes it work only once in beginning
+useEffect(() => {
+
+  console.log("APP.js UseEffect Executed")
+  store.dispatch(loadUser());
+}, []);
+
+
+return(
 //Enclosed the whole jsx in provider tag and passed in the store
-
-
-const App = () =>
-
-<Provider store={store}>
+<Provider store={store}> 
   <Router>
     <Fragment>
       <Navbar />
@@ -38,6 +55,7 @@ const App = () =>
 
     </Fragment>
   </Router>
-
   </Provider>
+);
+}
 export default App;

@@ -1,7 +1,12 @@
 import React,{Fragment,useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
-const Login = () => {
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types' 
+import {login} from '../../redux/actions/auth'
+
+
+const Login = ({login,isAuthenticated}) => {
 
     const [formData,setFormData]=useState({
         email:"",
@@ -17,11 +22,17 @@ const Login = () => {
 
     const onSubmit=async (e)=>{
         e.preventDefault();
-        console.log("Login not implemented yet");
+        console.log("Login on Submit");
+        login(email,password);
     }
 
 
     console.log(formData)
+
+    //If user is logged in,redirect to the dashboard. We dont need to see login page
+    if(isAuthenticated){
+      return <Redirect to ='/dashboard'/>;
+    }
 
 
     return (
@@ -54,4 +65,15 @@ const Login = () => {
     )
 }
 
-export default Login
+Login.propTypes={
+  login:PropTypes.func.isRequired,
+  isAuthenticated:PropTypes.bool
+}
+
+const mapStateToProps=state=>({
+  isAuthenticated:state.auth.isAuthenticated
+});
+
+
+
+export default connect(mapStateToProps,{login})(Login)

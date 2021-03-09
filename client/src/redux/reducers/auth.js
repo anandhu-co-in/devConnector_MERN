@@ -1,4 +1,4 @@
-import {REGISTER_FAIL,REGISTER_SUCCESS,USER_LOADED,AUTH_ERROR} from '../actions/types';
+import {REGISTER_FAIL,REGISTER_SUCCESS,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT} from '../actions/types';
 
 
 const initialState={
@@ -19,6 +19,7 @@ export default function(state=initialState,action){
 
     switch(type){
         case REGISTER_SUCCESS:
+        case LOGIN_SUCCESS:
             localStorage.setItem('token',payload.token);
 
             console.log(payload)
@@ -30,7 +31,9 @@ export default function(state=initialState,action){
                 isAuthenticated:true,
                 loading:false
             }
-
+        
+        case LOGOUT:
+        case LOGIN_FAIL:
         case REGISTER_FAIL:
         case AUTH_ERROR : //This syntax to execute same thing for both the types
             localStorage.removeItem('token')

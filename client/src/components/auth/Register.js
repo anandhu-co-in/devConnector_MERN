@@ -1,5 +1,5 @@
 import React,{Fragment,useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import {PropTypes} from 'prop-types'
 
 //redux
@@ -10,7 +10,7 @@ import {register} from '../../redux/actions/auth'
 
 import axios from 'axios'
 
-const Register = ({setAlert,register}) => {
+const Register = ({setAlert,register,isAuthenticated}) => {
 
 
     const [formData,setFormData]=useState({
@@ -71,6 +71,10 @@ const Register = ({setAlert,register}) => {
 
     console.log(formData)
 
+    //If user is logged in,redirect to the dashboard. We dont need to see register page
+    if(isAuthenticated){
+      return <Redirect to ='/dashboard'/>;
+    }
 
     return (
         <Fragment>
@@ -122,9 +126,13 @@ Register.propTypes={
   register:PropTypes.func.isRequired
 }
 
+const mapStateToProps=state=>({
+  isAuthenticated:state.auth.isAuthenticated
+});
+
 
 {/* export default Register */}
 {/*Chaged to below one to connect to redux  */}
-export default connect(null,{setAlert,register})(Register)
+export default connect(mapStateToProps,{setAlert,register})(Register)
  {/*null in place of mapStateToProps, which we dont use in this case, we only call action from this component  */}
 

@@ -14,24 +14,21 @@ import {loadUser} from './redux/actions/auth'
 import setAuthToken from './redux/utilities/setAuthToken'
 
 
-//If token exists in locas storage set it to axios headers'  'x-auth-token"
+//When you open app, If token exists in locas storage set it to axios headers'  'x-auth-token"
 if(localStorage.token){
       setAuthToken(localStorage.token)
   }
-
-
 
 
 const App = () =>{
 
 //using useeffects call load user once the app loads, []at the end makes it work only once in beginning
 useEffect(() => {
-
   console.log("APP.js UseEffect Executed")
-  store.dispatch(loadUser());
+  store.dispatch(loadUser()); //store.dispatch, to dispath action from this page
 }, []);
 
-
+ 
 return(
 //Enclosed the whole jsx in provider tag and passed in the store
 <Provider store={store}> 

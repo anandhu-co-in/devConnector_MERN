@@ -4,6 +4,8 @@ import Landing from './components/layouts/Landing.js'
 import Navbar from './components/layouts/Navbar.js'
 import Login from './components/auth/Login.js'
 import Register from './components/auth/Register.js'
+import Dashboard from './components/dashboard/Dashboard'
+import PrivateRoute from './components/routing/PrivateRoute'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 
 //Redux
@@ -45,6 +47,9 @@ return(
 
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Register" component={Register} />
+
+            {/* For the dashboard route, the user should be authenticated, we have created a PivateRoute to display this component which displays dashboard only if authenticated, else redirects to login*/}
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
           </Switch>
 

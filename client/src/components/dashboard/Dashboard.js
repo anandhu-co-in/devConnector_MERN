@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-const Dashboard = props => {
+import {connect} from 'react-redux'
+import {getCurrnetProfile} from '../../redux/actions/profile';
+
+
+const Dashboard = ({getCurrnetProfile,auth,profile}) => {
+
+    useEffect(()=>{
+        getCurrnetProfile();
+    },[])
+
+
     return (
         <div>
             Dashboard
@@ -10,7 +20,14 @@ const Dashboard = props => {
 }
 
 Dashboard.propTypes = {
-
+    getCurrnetProfile:PropTypes.func.isRequired,
+    auth:PropTypes.object.isRequired,
+    profile:PropTypes.object.isRequired
 }
 
-export default Dashboard
+const mapStateToProps=state=>({
+    auth:state.auth,
+    profile:state.profile
+});
+
+export default connect(mapStateToProps,{getCurrnetProfile})(Dashboard);

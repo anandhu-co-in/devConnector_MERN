@@ -9,6 +9,14 @@ const Navbar = ({auth:{isAuthenticated,loading},logout}) => {
     //Links to display when loggedin
     const authLinks=(
         <ul>
+
+            <li>
+                <Link to ='/dashboard'>
+                    <i className='fas fa-user'></i>{' '}
+                    Dashboard
+                </Link>
+            </li>
+
             <li>
                 <a onClick={logout} href='#!'>
                     <i className='fas fa-sign-out-alt'></i>{' '}
@@ -33,7 +41,7 @@ const Navbar = ({auth:{isAuthenticated,loading},logout}) => {
 
             <nav className="navbar bg-dark">
             <h1>
-                <a href="index.html"><i className="fas fa-code"></i> DevConnector</a>
+                <Link to ='/'><i className="fas fa-code"></i> DevConnector</Link>
             </h1>
             
             {!loading && (<Fragment>{isAuthenticated?authLinks:guestLinks}</Fragment>)}

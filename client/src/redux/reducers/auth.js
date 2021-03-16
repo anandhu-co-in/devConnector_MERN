@@ -1,4 +1,4 @@
-import {REGISTER_FAIL,REGISTER_SUCCESS,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT} from '../actions/types';
+import {REGISTER_FAIL,REGISTER_SUCCESS,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,CLEAR_PROFILE} from '../actions/types';
 
 
 const initialState={
@@ -43,7 +43,8 @@ export default function(state=initialState,action){
                 ...state,
                 token:null,
                 isAuthenticated:false,
-                loading:false
+                loading:false,
+                user :null
             }
 
 
@@ -51,11 +52,11 @@ export default function(state=initialState,action){
 
             return{
                 ...state,
-                ...payload,
                 isAuthenticated:true,
-                loading:false
+                loading:false,
+                user:payload
             }
-
+                
 
         default :
             return state;

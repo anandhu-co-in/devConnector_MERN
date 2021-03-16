@@ -17,6 +17,8 @@ export const getCurrnetProfile=()=>async dispatch=>{
         })
         
     } catch (err) {
+        console.log(err.res);
+
         dispatch({
             type:PROFILE_ERROR,
             payload:{msg:err.response.statusText,status:err.response.status}

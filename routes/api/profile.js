@@ -20,9 +20,14 @@ router.get("/me",tokenValidator,async (req,res)=>{
 
         //Get the user profile matching the id
 
+        console.log(req.user.id)
+        
         const profile= await profileModel.findOne({user:req.user.id}).populate('user',['name','avatar']); // {user:req.user.id} used to filter one record from profile model(it has user field) with user field value same as the one in request
                                                                     //Investigate the populate part --> user filed is a lookup, from the target take name and avatart and populate in user
         if(!profile){
+        
+            console.log("No profile found")
+
             return res.status(400).json({msg:'There is no profile for this user'});     
         }
 

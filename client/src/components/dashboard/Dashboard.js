@@ -33,7 +33,6 @@ const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) =>
         </Fragment> }
 
     
-
     </Fragment>
 
     // return (

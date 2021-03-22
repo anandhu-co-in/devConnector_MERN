@@ -14,6 +14,9 @@ import store from './redux/store';
 import Alert from './components/layouts/Alert';
 import {loadUser} from './redux/actions/auth'
 import setAuthToken from './redux/utilities/setAuthToken'
+import CreateProfile from './components/profile-forms/CreateProfile';
+
+
 
 
 //When you open app, If token exists in locas storage set it to axios headers'  'x-auth-token"
@@ -50,6 +53,9 @@ return(
 
             {/* For the dashboard route, the user should be authenticated, we have created a PivateRoute to display this component which displays dashboard only if authenticated, else redirects to login*/}
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+
+            <PrivateRoute exact path="/create-profile" component={CreateProfile} />
 
           </Switch>
 

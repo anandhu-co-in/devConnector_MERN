@@ -1,7 +1,11 @@
 import React,{Fragment, useState} from 'react'
 import PropTypes from 'prop-types'
+import {Link,withRouter} from 'react-router-dom' // Withourouter thing is to get the history object, which we will need to pass into the create profile action
+import {createProfile} from '../../redux/actions/profile'
+import {connect} from 'react-redux'
 
-const CreateProfile = props => {
+
+const CreateProfile = ({createProfile,history}) => {
 
     const [formData, setFormData] = useState({
         company:'',
@@ -43,6 +47,14 @@ const CreateProfile = props => {
 
     console.log(formData);
 
+
+    //OnSubmit, called from the form onsubmit (see below), to do the profile creatin 
+    const onSubmit=e=>{
+      e.preventDefault();
+      createProfile(formData,history);
+    }
+
+
     return (
         <Fragment>
 
@@ -55,7 +67,7 @@ const CreateProfile = props => {
         </p>
         <small>* = required field</small>
 
-        <form className="form">
+        <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
             <option value="0">* Select Professional Status</option>
@@ -157,10 +169,12 @@ const CreateProfile = props => {
             
         </Fragment>
     )
-}
+}  
 
-CreateProfile.propTypes = {
+CreateProfile.propTypes = {};
 
-}
+export default connect(null,{createProfile})(withRouter(CreateProfile)); 
 
-export default CreateProfile
+{/* withrouter used above, since we need that history object, you can see in destructed from propp  */}
+
+

@@ -18,6 +18,8 @@ const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) =>
 
     //If profile is still loading, dashboard should displayed the spinner gif. Other wise display the dashboard (Using ternary condition)
 
+    //Investigate : - Whey did i add profile===null below??
+
     return  loading && profile===null ?<Spinner/>:<Fragment>
 
         <h1 className="large text-primary">Dashboard</h1>

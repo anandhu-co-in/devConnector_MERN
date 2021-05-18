@@ -5,6 +5,9 @@ import {createProfile} from '../../redux/actions/profile'
 import {connect} from 'react-redux'
 
 
+
+// createProfile action available here as i passed it through connect, history avaialable as i used withRouter in connect (check bottom of this page)
+
 const CreateProfile = ({createProfile,history}) => {
 
     const [formData, setFormData] = useState({
@@ -51,7 +54,7 @@ const CreateProfile = ({createProfile,history}) => {
     //OnSubmit, called from the form onsubmit (see below), to do the profile creatin 
     const onSubmit=e=>{
       e.preventDefault();
-      createProfile(formData,history);
+      createProfile(formData,history); // I got confused initialy as how we are able to call createProfile action, which returns a dispatch function, But i missed that we are not calling it directly, here, noticed we passed it thourgh the connect to props!
     }
 
 

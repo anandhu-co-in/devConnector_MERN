@@ -2,7 +2,7 @@ import {GET_PROFILE,PROFILE_ERROR,CLEAR_PROFILE, LOGOUT} from '../actions/types'
 
 const initialState={
     profile:null,
-    prifiles:[],
+    profiles:[],
     repos:[],
     loading:true,
     error:{}

@@ -54,7 +54,7 @@ try {
 
 } catch (err) {
 
-    const errors=err.response.data.errors;
+    const errors=err.response.data.errors; //Check below sample API response to understand this
     
     if(errors){
         errors.forEach(error=>dispatch(setAlert(error.msg,'danger')));
@@ -67,6 +67,16 @@ try {
 
 }
 
-
-
 }
+
+
+// createProfile/EditProfile API response in case of errors
+// {
+//     "errors": [
+//         {
+//             "msg": "Status is requried",
+//             "param": "status",
+//             "location": "body"
+//         }
+//     ]
+// }

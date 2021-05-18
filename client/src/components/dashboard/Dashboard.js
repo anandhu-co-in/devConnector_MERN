@@ -7,6 +7,7 @@ import {getCurrnetProfile} from '../../redux/actions/profile';
 import Spinner from '../layouts/Spinner'
 
 import {Link} from 'react-router-dom'
+import { DashboardActions } from './DashboardActions';
 
 
 const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) => {
@@ -27,7 +28,8 @@ const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) =>
             <i className="fas fa-user"></i> Welcome {user && user.name}
         </p>
 
-        {profile!==null?<Fragment>Has Profile</Fragment> : <Fragment> 
+        {/* If profile exists, then dashboard actions dubb compoents is displayed */}
+        {profile!==null?<Fragment> <DashboardActions/> </Fragment> : <Fragment> 
             
             <p>You haven't yet setup your profile.</p> <br/>
             <Link to ='/create-profile' className="btn btn-primary">Create Profile</Link>

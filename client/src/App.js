@@ -15,6 +15,7 @@ import Alert from './components/layouts/Alert';
 import {loadUser} from './redux/actions/auth'
 import setAuthToken from './redux/utilities/setAuthToken'
 import CreateProfile from './components/profile-forms/CreateProfile';
+import EditProfile from './components/profile-forms/EditProfile';
 
 
 
@@ -56,6 +57,7 @@ return(
 
 
             <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
 
           </Switch>
 

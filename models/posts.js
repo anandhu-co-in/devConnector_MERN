@@ -4,8 +4,8 @@ const Schema=mongoose.Schema;
 
 const PostSchema=new Schema({
 
-    user:{
-        type:Schema.Types.ObjectId,
+    user:{  
+        type:Schema.Types.ObjectId,  //This field is super key to user
         ref:'user'
     },
     text:{

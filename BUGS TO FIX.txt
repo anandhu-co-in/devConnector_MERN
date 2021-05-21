@@ -1,0 +1,8 @@
+
+
+//List of issues that should be fixed before i deploy this : -
+
+
+1. Layout issues with the Experience and Education tables in dashboard, make it look awesome
+2. Issue when navigating directly to edit profile
+3. Spinnner issue when loging out and loging in without refreshing browser

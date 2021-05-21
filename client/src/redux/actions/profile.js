@@ -11,6 +11,9 @@ export const getCurrnetProfile=()=>async dispatch=>{
         
         const res = await axios.get('/api/profile/me');
 
+        console.log("inside getCurrentProfileAction res.get results : ");
+        console.log(res.data)
+
         dispatch({
             type:GET_PROFILE,
             payload:res.data

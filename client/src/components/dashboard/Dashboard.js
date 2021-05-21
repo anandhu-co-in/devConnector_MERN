@@ -9,13 +9,19 @@ import Spinner from '../layouts/Spinner'
 import {Link} from 'react-router-dom'
 import { DashboardActions } from './DashboardActions';
 
+import Experience from './Experience';
+import Education from './Educaction';
+
 
 const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) => {
+
+
 
     useEffect(()=>{
         getCurrnetProfile();
     },[])
 
+ 
 
     //If profile is still loading, dashboard should displayed the spinner gif. Other wise display the dashboard (Using ternary condition)
 
@@ -29,7 +35,7 @@ const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) =>
         </p>
 
         {/* If profile exists, then dashboard actions dubb compoents is displayed */}
-        {profile!==null?<Fragment> <DashboardActions/> </Fragment> : <Fragment> 
+        {profile!==null?<Fragment> <DashboardActions/> <Experience experience={profile.experience}/> <Education education={profile.education}/>  </Fragment> : <Fragment> 
             
             <p>You haven't yet setup your profile.</p> <br/>
             <Link to ='/create-profile' className="btn btn-primary">Create Profile</Link>

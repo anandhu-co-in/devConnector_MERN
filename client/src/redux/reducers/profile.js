@@ -18,6 +18,8 @@ export default function(state=initialState,action){
 
         case GET_PROFILE:
         case UPDATE_PROFILE:
+            console.log("GET_PROFILE REDUCER CASE")
+            console.log({...state,profile:payload})
             return{...state,profile:payload,loading:false}
         case PROFILE_ERROR:
             return{...state,error:payload,loading:false}

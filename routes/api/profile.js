@@ -3,6 +3,7 @@ const router = express.Router();
 const tokenValidator=require("../../middlewear/validatetoken");
 const userModel=require("../../models/user");
 const profileModel=require("../../models/profile");
+const postModel=require("../../models/posts");
 
 const {check,validationResult} = require("express-validator");
 const axios=require('axios');
@@ -160,11 +161,17 @@ router.get('/user/:user_id',async (req,res)=>{
 
 router.delete('/',tokenValidator,async (req,res)=>{
     try{
-        //Remove profile
 
+        
         console.log(req.user.id)
+
+        //Delete posts of the user from post model
+        await postModel.deleteMany({user:req.user.id});
+
+        //Remove profile
         await profileModel.findOneAndRemove({user:req.user.id});
 
+        //Remove User
         await userModel.findOneAndRemove({_id:req.user.id});
 
         res.json({msg:"User deleted"});

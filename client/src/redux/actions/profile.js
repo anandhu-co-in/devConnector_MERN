@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setAlert} from './alert';
 
-import {GET_PROFILE,PROFILE_ERROR,UPDATE_PROFILE} from './types';
+import {CLEAR_PROFILE, GET_PROFILE,PROFILE_ERROR,UPDATE_PROFILE,ACCOUNT_DELETED} from './types';
 
 //Get current users profile
 
@@ -169,3 +169,94 @@ export const addExperience = (formData,history,edit=false) => async dispatch=>{
         }
         
         }
+
+
+
+        //This action will delete the experience using id
+
+        export const deleteExperience = id => async dispatch =>{
+            
+            try {
+                
+                const res= await axios.delete(`api/profile/experience/${id}`) //Template literal? need to understand this
+
+                dispatch({
+                    type : UPDATE_PROFILE,
+                    payload : res.data
+                });
+
+                dispatch(setAlert('Experience Removed','success'))
+
+            } catch (err) {
+
+                dispatch({
+                    type:PROFILE_ERROR,
+                    payload:{msg:err.response.statusText,status:err.response.status}
+                });
+                
+            }
+        }
+
+
+
+        //Delete Eduction , smiliary to above one
+
+        export const deleteEducation = id => async dispatch =>{
+            
+            try {
+                
+                const res= await axios.delete(`api/profile/education/${id}`) //Template literal? need to understand this
+
+                dispatch({
+                    type : UPDATE_PROFILE,
+                    payload : res.data
+                });
+
+                dispatch(setAlert('Education Removed','success'))
+
+            } catch (err) {
+
+                dispatch({
+                    type:PROFILE_ERROR,
+                    payload:{msg:err.response.statusText,status:err.response.status}
+                });
+                
+            }
+        }
+
+
+        //Delete current account
+
+        export const deleteAccount = () => async dispatch =>{
+
+            console.log("Delete Account Called");
+
+            if(window.confirm("Are you sure to delete your account ?")){
+
+                try {
+                
+                    const res= await axios.delete(`api/profile`) 
+    
+                    dispatch({type : CLEAR_PROFILE});
+                    dispatch({type : ACCOUNT_DELETED});
+    
+                    dispatch(setAlert('Account Deleted Removed','Success'))
+    
+                } catch (err) {
+    
+                    dispatch({
+                        type:PROFILE_ERROR,
+                        payload:{msg:err.response.statusText,status:err.response.status}
+                    });
+                    
+                }
+
+
+            }else{
+                console.log("You denied the popup to delete your account");
+            }
+
+            
+
+        }
+

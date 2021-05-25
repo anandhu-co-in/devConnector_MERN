@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {connect} from 'react-redux'
-import {getCurrnetProfile} from '../../redux/actions/profile';
+import {getCurrnetProfile,deleteAccount} from '../../redux/actions/profile';
 
 import Spinner from '../layouts/Spinner'
 
@@ -13,7 +13,7 @@ import Experience from './Experience';
 import Education from './Educaction';
 
 
-const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) => {
+const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile,loading}}) => {
 
 
 
@@ -35,7 +35,18 @@ const Dashboard = ({getCurrnetProfile,auth:{user},profile:{profile,loading}}) =>
         </p>
 
         {/* If profile exists, then dashboard actions dubb compoents is displayed */}
-        {profile!==null?<Fragment> <DashboardActions/> <Experience experience={profile.experience}/> <Education education={profile.education}/>  </Fragment> : <Fragment> 
+        {profile!==null?<Fragment> 
+            <DashboardActions/> 
+            <Experience experience={profile.experience}/> 
+            <Education education={profile.education}/>  
+
+            <div className="my-2">
+                <button onClick={()=>{console.log("Delete account cicked"); deleteAccount()}} className="btn btn-danger">
+                    <i className="fa fa-user"></i> Delete My Account
+                </button>
+            </div>
+
+            </Fragment> : <Fragment> 
             
             <p>You haven't yet setup your profile.</p> <br/>
             <Link to ='/create-profile' className="btn btn-primary">Create Profile</Link>
@@ -63,4 +74,4 @@ const mapStateToProps=state=>({
     profile:state.profile
 });
 
-export default connect(mapStateToProps,{getCurrnetProfile})(Dashboard);
+export default connect(mapStateToProps,{getCurrnetProfile,deleteAccount})(Dashboard);

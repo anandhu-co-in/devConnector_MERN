@@ -1,8 +1,12 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Moment from 'react-moment'
+import {connect} from 'react-redux'
 
-const Experience = ({experience}) => {
+import {deleteExperience} from '../../redux/actions/profile';
+
+
+const Experience = ({experience,deleteExperience}) => {
 
     console.log("EXPERINCE COMPONENET")
     console.log(experience)
@@ -24,7 +28,8 @@ const Experience = ({experience}) => {
             </td>
 
             <td>
-                <button className="btn btn-danger">Delete</button>
+                <button onClick={()=>deleteExperience(exp._id)} className="btn btn-danger">Delete</button> 
+                {/* I added the imported delete experience action in the onlick listener of delte button, so in a particlay row, that action will be called with that exp's id */}
 
             </td>
 
@@ -66,4 +71,4 @@ Experience.propTypes = {
 
 }
 
-export default Experience
+export default connect(null,{deleteExperience})(Experience)

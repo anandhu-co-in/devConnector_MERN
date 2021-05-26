@@ -1,0 +1,9 @@
+{
+    "mongoURI":"mongodb+srv://anandhu:bpMyOKmqctIsQ170@devclustermernudemy.iqq4v.mongodb.net/testDevConnectDB?retryWrites=true&w=majority",
+    "jwtSecret":"mysercretkey",
+    "tokenExpiry":36000,
+
+    "comment":"We had installed a dependency called config, this allows us create this file to store config values in json format",
+    "githubtoken":"4a07c4ef27a94db0ad0e6f0f75c7a1608c41d566"
+
+}

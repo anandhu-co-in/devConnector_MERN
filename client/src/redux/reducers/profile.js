@@ -1,4 +1,4 @@
-import {GET_PROFILE,PROFILE_ERROR,CLEAR_PROFILE, LOGOUT,UPDATE_PROFILE} from '../actions/types';
+import {GET_PROFILE,PROFILE_ERROR,CLEAR_PROFILE, LOGOUT,UPDATE_PROFILE,GET_PROFILES,GET_REPOS} from '../actions/types';
 
 const initialState={
     profile:null,
@@ -21,6 +21,13 @@ export default function(state=initialState,action){
             console.log("GET_PROFILE REDUCER CASE")
             console.log({...state,profile:payload})
             return{...state,profile:payload,loading:false}
+
+        case GET_PROFILES:
+            return {...state,profiles:payload,loading:false}
+        
+        case GET_REPOS:
+            return {...state,repos:payload,loading:false}
+
         case PROFILE_ERROR:
             return{...state,error:payload,loading:false}
 

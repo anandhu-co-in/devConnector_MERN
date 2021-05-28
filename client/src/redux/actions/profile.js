@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setAlert} from './alert';
 
-import {CLEAR_PROFILE, GET_PROFILE,PROFILE_ERROR,UPDATE_PROFILE,ACCOUNT_DELETED} from './types';
+import {CLEAR_PROFILE, GET_PROFILE,PROFILE_ERROR,UPDATE_PROFILE,ACCOUNT_DELETED,GET_PROFILES,GET_REPOS} from './types';
 
 //Get current users profile
 
@@ -29,6 +29,90 @@ export const getCurrnetProfile=()=>async dispatch=>{
     }
 
 }
+
+
+
+//Get All the Profiles from db and store it in profiles array of the state
+
+export const getProfiles=()=>async dispatch=>{
+
+    console.log("getProfilesActionStarted")
+    //First clear the current profile
+    dispatch({type:CLEAR_PROFILE})
+
+    //Get all the user profiles and add to the state
+    try {    
+        const res = await axios.get('/api/profile');
+        console.log(res.data)
+
+        dispatch({
+            type:GET_PROFILES,
+            payload:res.data
+        })
+        
+    } catch (err) {
+        console.log(err.res);
+
+        dispatch({
+            type:PROFILE_ERROR,
+            payload:{msg:err.response.statusText,status:err.response.status}
+        })
+    }
+
+}
+
+//Get a particular profile using the userID, and store it to profile of the state
+
+
+export const getProfileByUserId=(userId)=>async dispatch=>{
+
+    //First clear the current profile
+    dispatch({type:CLEAR_PROFILE})
+
+    //Get all the user profiles and add to the state
+    try {    
+        const res = await axios.get(`/api/profile/user/${userId}`);
+        dispatch({
+            type:GET_PROFILE,
+            payload:res.data
+        })
+        
+    } catch (err) {
+        console.log(err.res);
+        dispatch({
+            type:PROFILE_ERROR,
+            payload:{msg:err.response.statusText,status:err.response.status}
+        })
+    }
+
+}
+
+
+//Get all githubRepos of ther user and store it to repos array of state
+
+export const getGitHubRepos=(username)=>async dispatch=>{
+
+
+    //Get all the user profiles and add to the state
+    try {    
+        const res = await axios.get(`/api/profile/github/${username}`);
+        dispatch({
+            type:GET_REPOS,
+            payload:res.data
+        })
+        
+    } catch (err) {
+        console.log(err.res);
+        dispatch({
+            type:PROFILE_ERROR,
+            payload:{msg:err.response.statusText,status:err.response.status}
+        })
+    }
+
+}
+
+
+
 
 
 // Create or update profile

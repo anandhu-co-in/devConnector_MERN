@@ -19,6 +19,7 @@ import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import Profiles from './components/Profile/Profiles';
+import IndividualProfile from './components/Profile/IndividualProfile';
 
 
 
@@ -52,9 +53,10 @@ return(
 
           <Switch>
 
-            <Route exact path="/Login" component={Login} />
-            <Route exact path="/Register" component={Register} />
-            <Route exact path="/Profiles" component={Profiles} />
+            <Route exact path="/Login" component={Login}/>
+            <Route exact path="/Register" component={Register}/>
+            <Route exact path="/Profiles" component={Profiles}/>
+            <Route exact path="/Profile/:id" component={IndividualProfile}/>
 
             {/* For the dashboard route, the user should be authenticated, we have created a PivateRoute to display this component which displays dashboard only if authenticated, else redirects to login*/}
             <PrivateRoute exact path="/dashboard" component={Dashboard} />

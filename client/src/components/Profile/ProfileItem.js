@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const ProfileItem = ({profileitem}) => {
@@ -13,7 +14,7 @@ const ProfileItem = ({profileitem}) => {
             <h2>{profileitem.user.name}</h2>
             <p>{profileitem.status}</p>
             <p>{profileitem.location}</p>
-            <a href="profile.html" className="btn btn-primary">View Profile</a>
+            <Link to={`/profile/${profileitem.user._id}`} className="btn btn-primary">View Profile</Link>
           </div>
 
           <ul>

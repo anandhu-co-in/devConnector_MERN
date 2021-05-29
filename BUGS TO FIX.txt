@@ -6,3 +6,7 @@
 1. Layout issues with the Experience and Education tables in dashboard, make it look awesome
 2. Issue when navigating directly to edit profile
 3. Spinnner issue when loging out and loging in without refreshing browser
+4. The date shown in the profile display is not correct, for education and Experience
+5. When long description added for edu and exp, messes up the CSS
+6. Github API not working after sometime
+7. Look into the security defect brad is expalning at lession 6.. Fix it if if matter

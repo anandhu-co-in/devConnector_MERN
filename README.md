@@ -1,4 +1,4 @@
-# devConnector_MERN
+# devConnector_MERN [WORKN IN PROGRESS........]
 Repo for my dev connector project (MERN)
 
 Still working on it

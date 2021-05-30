@@ -20,6 +20,7 @@ import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import Profiles from './components/Profile/Profiles';
 import IndividualProfile from './components/Profile/IndividualProfile';
+import Posts from './components/posts/Posts';
 
 
 
@@ -60,12 +61,11 @@ return(
 
             {/* For the dashboard route, the user should be authenticated, we have created a PivateRoute to display this component which displays dashboard only if authenticated, else redirects to login*/}
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-
-
             <PrivateRoute exact path="/create-profile" component={CreateProfile} />
             <PrivateRoute exact path="/edit-profile" component={EditProfile} />
             <PrivateRoute exact path="/add-experience" component={AddExperience} />
             <PrivateRoute exact path="/add-education" component={AddEducation} />
+            <PrivateRoute exact path="/posts" component={Posts} />
 
           </Switch>
 

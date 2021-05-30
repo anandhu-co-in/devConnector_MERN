@@ -1,6 +1,6 @@
 
 
-//List of issues that should be fixed before i deploy this : -
+//List of issues that should be fixed before deployment : -
 
 
 1. Layout issues with the Experience and Education tables in dashboard, make it look awesome
@@ -9,4 +9,10 @@
 4. The date shown in the profile display is not correct, for education and Experience
 5. When long description added for edu and exp, messes up the CSS
 6. Github API not working after sometime
-7. Look into the security defect brad is expalning at lession 6.. Fix it if if matter
+7. Look into the security defect brad is expalning at lession 6.. Fix it if it matter
+
+
+
+Updates :-
+
+1. Betterfy the UI, maybe what about using Boostrap to build a better UI prior deployment??!

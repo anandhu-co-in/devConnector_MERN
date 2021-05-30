@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Spinner from '../layouts/Spinner'
 import {getPosts} from '../../redux/actions/post'
+import Postitem from './Postitem'
 
 const Posts = ({post:{posts,loading},getPosts}) => {
 
@@ -13,11 +14,26 @@ const Posts = ({post:{posts,loading},getPosts}) => {
 
 
 
-    return (
-        <div>
-            Posta page.. chheck the psots are loaded inreducx
+    return loading?<Spinner/>: (
+        <Fragment>
 
-        </div>
+            <h1 className="large text-primary">
+                Posts
+            </h1>
+            <p className="lead"><i className="fas fa-user"></i> Welcome to the community!</p>
+
+                {/* Post form comes here */}
+
+            <div className="posts">
+
+            {posts.map((post,index)=>
+                <Postitem post={post}/>
+            )}
+                
+
+            </div>
+            
+        </Fragment>
     )
 }
 

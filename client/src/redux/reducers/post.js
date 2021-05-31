@@ -1,5 +1,5 @@
 import { post } from 'request';
-import {GET_POSTS,POST_ERROR,UPDATE_LIKES} from '../actions/types';
+import {DELETE_POST, GET_POSTS,POST_ERROR,UPDATE_LIKES} from '../actions/types';
 
 
 const initialState={
@@ -31,14 +31,18 @@ export default function(state=initialState,action){
             };
 
         case UPDATE_LIKES:
-
-            console.log("Updating likes..................")
             return{
                 ...state,
                 posts:state.posts.map(post=> post._id === payload.postId ? {...post, likes:payload.likes}:post)
-
                 // goes through all post objects in posts array, if the id of current new likes array matches, with any of the post, then just replace the current likes array with new one!
             };
+
+        case DELETE_POST:
+            return{
+                ...state,
+                posts:state.posts.filter(post=>post._id!==payload), //Payload is just the id we passed to here
+                loading:false  
+            }
         
         default :
             return state;

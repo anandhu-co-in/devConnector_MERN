@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Moment,{moment} from 'react-moment'
 import {connect} from 'react-redux'
-import {likePost,unlikePost} from '../../redux/actions/post'
+import {likePost,unlikePost,deletePost} from '../../redux/actions/post'
 
-const Postitem = ({post,auth,likePost,unlikePost}) => {
+const Postitem = ({post,auth,likePost,unlikePost,deletePost}) => {
     return (
         <div className="post bg-white p-1 my-1">
         <div>
@@ -45,6 +45,7 @@ const Postitem = ({post,auth,likePost,unlikePost}) => {
             {auth.isAuthenticated && auth.loading==false && auth.user._id===post.user && 
                 <button      
                 type="button"
+                onClick={()=>deletePost(post._id)}
                 className="btn btn-danger">
                 <i className="fas fa-times"></i>
                 </button>
@@ -67,4 +68,4 @@ const mapStateToProps=state=>({
 
 })
 
-export default connect(mapStateToProps,{likePost,unlikePost})(Postitem);
+export default connect(mapStateToProps,{likePost,unlikePost,deletePost})(Postitem);

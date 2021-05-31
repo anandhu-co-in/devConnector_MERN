@@ -11,6 +11,7 @@
 6. Github API not working after sometime
 7. Look into the security defect brad is expalning at lession 6.. Fix it if it matter
 8. In posts page display the date in correct format YYYY/MM/DD, as it was showing invlaid date when i tried
+9. The post deletion feature is not tested well
 
 
 

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Spinner from '../layouts/Spinner'
 import {getPosts} from '../../redux/actions/post'
 import Postitem from './Postitem'
+import CreatePostForm from './CreatePostForm'
 
 const Posts = ({post:{posts,loading},getPosts}) => {
 
@@ -23,6 +24,7 @@ const Posts = ({post:{posts,loading},getPosts}) => {
             <p className="lead"><i className="fas fa-user"></i> Welcome to the community!</p>
 
                 {/* Post form comes here */}
+                <CreatePostForm/>
 
             <div className="posts">
 

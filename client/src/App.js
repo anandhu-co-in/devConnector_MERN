@@ -21,6 +21,8 @@ import AddEducation from './components/profile-forms/AddEducation';
 import Profiles from './components/Profile/Profiles';
 import IndividualProfile from './components/Profile/IndividualProfile';
 import Posts from './components/posts/Posts';
+import Post from './components/Post/Post';
+import { GET_POSTS } from './redux/actions/types';
 
 
 
@@ -66,6 +68,7 @@ return(
             <PrivateRoute exact path="/add-experience" component={AddExperience} />
             <PrivateRoute exact path="/add-education" component={AddEducation} />
             <PrivateRoute exact path="/posts" component={Posts} />
+            <PrivateRoute exact path="/posts/:id" component={Post} />
 
           </Switch>
 

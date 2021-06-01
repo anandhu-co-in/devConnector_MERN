@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {Fragment}from 'react'
 import PropTypes from 'prop-types'
 import Moment,{moment} from 'react-moment'
 import {connect} from 'react-redux'
 import {likePost,unlikePost,deletePost} from '../../redux/actions/post'
+import { Link } from 'react-router-dom'
 
-const Postitem = ({post,auth,likePost,unlikePost,deletePost}) => {
+const Postitem = ({post,auth,likePost,unlikePost,deletePost,showActions}) => {
     return (
         <div className="post bg-white p-1 my-1">
         <div>
@@ -27,29 +28,35 @@ const Postitem = ({post,auth,likePost,unlikePost,deletePost}) => {
                 {/* <Moment format="YYYY/MM/DD">post.date</Moment> */}
             </p>
 
-            <button onClick={e=>likePost(post._id)} type="button" className="btn btn-light">
-            <i className="fas fa-thumbs-up"></i>
-            <span>{" "+ post.likes.length}</span>
-            </button>
-            
-            <button onClick={e=>unlikePost(post._id)} type="button" className="btn btn-light">
-            <i className="fas fa-thumbs-down"></i>
-            </button>
-            
-            <a href="post.html" className="btn btn-primary">
-            Discussion <span className='comment-count'>{" "+ post.comments.length}</span>
-            </a>
+
+            {showActions && <Fragment>
+                
+                    <button onClick={e=>likePost(post._id)} type="button" className="btn btn-light">
+                    <i className="fas fa-thumbs-up"></i>
+                    <span>{" "+ post.likes.length}</span>
+                    </button>
+                    
+                    <button onClick={e=>unlikePost(post._id)} type="button" className="btn btn-light">
+                    <i className="fas fa-thumbs-down"></i>
+                    </button>
+                    
+                    <Link to={`posts/${post._id}`} className="btn btn-primary">
+                    Discussion <span className='comment-count'>{" "+ post.comments.length}</span>
+                    </Link>
 
 
-            {/* Showing the delte button, only if this post is from the current logged in user, So he can delete the post */}
-            {auth.isAuthenticated && auth.loading==false && auth.user._id===post.user && 
-                <button      
-                type="button"
-                onClick={()=>deletePost(post._id)}
-                className="btn btn-danger">
-                <i className="fas fa-times"></i>
-                </button>
-            }
+                    {/* Showing the delte button, only if this post is from the current logged in user, So he can delete the post */}
+                    {auth.isAuthenticated && auth.loading==false && auth.user._id===post.user && 
+                        <button      
+                        type="button"
+                        onClick={()=>deletePost(post._id)}
+                        className="btn btn-danger">
+                        <i className="fas fa-times"></i>
+                        </button>
+                    }
+
+                </Fragment>}
+
 
 
 
@@ -57,6 +64,11 @@ const Postitem = ({post,auth,likePost,unlikePost,deletePost}) => {
         </div>
     </div>
     )
+}
+
+
+Postitem.defaultProps={
+    showActions : true
 }
 
 Postitem.propTypes = {

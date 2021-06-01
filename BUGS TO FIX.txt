@@ -12,7 +12,8 @@
 7. Look into the security defect brad is expalning at lession 6.. Fix it if it matter
 8. In posts page display the date in correct format YYYY/MM/DD, as it was showing invlaid date when i tried
 9. The post deletion feature is not tested well
-
+10. There is a serious bug with the Post.js component, if i directly opens a post throught url, i gets logged out,, even if i was already logged in!
+11. Bug with single post display, try opening posts from the posts screen, old post flashes,,
 
 
 Updates :-

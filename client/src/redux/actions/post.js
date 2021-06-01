@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {setAlert} from  './alert'
-import {GET_POSTS,POST_ERROR, UPDATE_LIKES,DELETE_POST,ADD_POST} from './types';
+import {GET_POSTS,POST_ERROR, UPDATE_LIKES,DELETE_POST,ADD_POST, GET_POST} from './types';
 
 
 //Get posts
@@ -130,6 +130,32 @@ export const addPost = (formData) => async dispatch =>{
         })
 
         dispatch(setAlert('Posted succesfully','success'))
+
+    } catch (err) {
+        dispatch({
+            type:POST_ERROR,
+            payload:{msg:err.response.statusText,status:err.response.status}
+        })
+    }
+}
+
+
+
+
+//Get Single Post
+
+export const getPost = (postId) => async dispatch =>{
+
+    try {
+        
+        console.log("Gettin post using... "+`/api/posts/${postId}`)
+        const res = await axios.get(`/api/posts/${postId}`);
+        console.log("Got post");
+
+        dispatch({
+            type:GET_POST,
+            payload:res.data
+        })
 
     } catch (err) {
         dispatch({

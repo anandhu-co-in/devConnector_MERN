@@ -12,3 +12,6 @@ Still working on it
 
 
 # This is the deployment branch
+
+
+# To deploy from deployment branch to the main branch of heroku -------->  git push heroku deployment:main

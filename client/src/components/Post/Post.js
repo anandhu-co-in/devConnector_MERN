@@ -6,7 +6,7 @@ import {getPost,addComment,deleteComment} from '../../redux/actions/post'
 import Postitem from '../posts/Postitem'
 import { Link } from 'react-router-dom'
 
-const Post = ({getPost,post:{post,loading},match,addComment,deleteComment}) => {
+const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth}) => {
 
 
     const [formData, setformData] = useState({
@@ -27,6 +27,8 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment}) => {
       e.preventDefault();
       addComment(formData,post._id);
      }
+
+
 
 
     
@@ -64,24 +66,32 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment}) => {
                 {post.comments?.map((comment)=>
                 
                     <div className="post bg-white p-1 my-1">
-                    <div>
-                        <a href="profile.html">
-                        <img
-                            className="round-img"
-                            src={comment.avatar}
-                            alt="Avatar not loaded"
-                        />
-                        <h4>{comment.name}</h4>
-                        </a>
-                    </div>
-                    <div>
-                        <p className="my-1">
-                        {comment.text}
-                        </p>
-                        <p className="post-date">
-                            {comment.date}
-                        </p>
-                    </div>
+                        <div>
+                            <a href="profile.html">
+                            <img
+                                className="round-img"
+                                src={comment.avatar}
+                                alt="Avatar not loaded"
+                            />
+                            <h4>{comment.name}</h4>
+                            </a>
+                        </div>
+                        <div>
+                            <p className="my-1">
+                            {comment.text}
+                            </p>
+                            <p className="post-date">
+                                {comment.date}
+                            </p>
+                        </div>
+
+                        {!auth.loading && auth.user._id===comment.user &&(
+                            <button type="button" class="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
+                                <i class="fas fa-times"></i>
+                            </button>
+                        )}
+
+
                     </div>
                 )}
 
@@ -97,7 +107,8 @@ Post.propTypes = {
 }
 
 const mapStateToProps=state=>({
-    post:state.post
+    post:state.post,
+    auth:state.auth
 })
 
 

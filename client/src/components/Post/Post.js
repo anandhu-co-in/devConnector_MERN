@@ -1,25 +1,92 @@
-import React,{Fragment,useEffect} from 'react'
+import React,{Fragment,useEffect,useState} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Spinner from '../layouts/Spinner'
-import {getPost} from '../../redux/actions/post'
+import {getPost,addComment,deleteComment} from '../../redux/actions/post'
 import Postitem from '../posts/Postitem'
 import { Link } from 'react-router-dom'
 
-const Post = ({getPost,post:{post,loading},match}) => {
+const Post = ({getPost,post:{post,loading},match,addComment,deleteComment}) => {
 
+
+    const [formData, setformData] = useState({
+        text:''
+    })
 
     useEffect(()=>{
         getPost(match.params.id) //Using the match variable to get the id which is present in the url
     },[])
+
+
+    //keep on storing the current typed comment value into formData object
+    const onChange = (e) => setformData({ ...formData, [e.target.name]: e.target.value });
+
+
+    const onSubmit = e =>{
+      console.log("Submite clicked")
+      e.preventDefault();
+      addComment(formData,post._id);
+     }
+
+
     
     return (
 
         
         loading || post===null ?<Spinner/> : 
         <Fragment>
-            <Link class="btn" to="/posts">Back to Posts</Link>
+            <Link className="btn" to="/posts">Back to Posts</Link>
             <Postitem post={post} showActions={false}/>
+
+            {/* Add comments, Better separate this into separate component as Brad did, but i just added it here to finish the course quickly */}
+
+                <div className="post-form">
+                    <div className="bg-primary p">
+                    <h3>Leave A Comment</h3>
+                    </div>
+                    <form className="form my-1" onSubmit={e=>onSubmit(e)}>
+                    <textarea
+                        onChange={e=>onChange(e)}
+                        name="text"
+                        cols="30"
+                        rows="5"
+                        placeholder="Comment on this post"
+                        required
+                    ></textarea>
+                    <input type="submit" className="btn btn-dark my-1" value="Submit" />
+                    </form>
+                </div>
+
+            {/* Lopp through the comments within post and display */}
+
+            <div className="comments">
+
+                {post.comments?.map((comment)=>
+                
+                    <div className="post bg-white p-1 my-1">
+                    <div>
+                        <a href="profile.html">
+                        <img
+                            className="round-img"
+                            src={comment.avatar}
+                            alt="Avatar not loaded"
+                        />
+                        <h4>{comment.name}</h4>
+                        </a>
+                    </div>
+                    <div>
+                        <p className="my-1">
+                        {comment.text}
+                        </p>
+                        <p className="post-date">
+                            {comment.date}
+                        </p>
+                    </div>
+                    </div>
+                )}
+
+            </div>
+
         </Fragment>
 
     )
@@ -34,4 +101,4 @@ const mapStateToProps=state=>({
 })
 
 
-export default connect(mapStateToProps,{getPost})(Post)
+export default connect(mapStateToProps,{getPost,addComment,deleteComment})(Post)

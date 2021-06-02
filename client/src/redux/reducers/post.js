@@ -1,5 +1,5 @@
 import { post } from 'request';
-import {ADD_POST, DELETE_POST, GET_POSTS,POST_ERROR,UPDATE_LIKES,GET_POST} from '../actions/types';
+import {ADD_POST, DELETE_POST, GET_POSTS,POST_ERROR,UPDATE_LIKES,GET_POST, ADD_COMMENT, REMOVE_COMMENT} from '../actions/types';
 
 
 const initialState={
@@ -55,6 +55,18 @@ export default function(state=initialState,action){
                 posts:state.posts.filter(post=>post._id!==payload), //Payload is just the id we passed to here
                 loading:false  
             }
+
+        case ADD_COMMENT:
+        case REMOVE_COMMENT:
+            return{
+                ...state,
+                post:payload,
+                loading:false
+            }
+
+
+        case REMOVE_COMMENT:
+
         
         default :
             return state;

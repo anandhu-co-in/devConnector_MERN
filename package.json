@@ -9,7 +9,14 @@
     "client" : "npm start --prefix client",
     "runBoth":"concurrently \"npm run dev\" \"npm run client\"",
 
-    "comment": "dev to run the backend server in nodemon, client to run the react inside client folder, run both to run both using concurrently"
+    "comment": "dev to run the backend server in nodemon, client to run the react inside client folder, run both to run both using concurrently",
+
+
+    "comment2":"Below onces are added for heroku deployment. need to understand working.. :",
+
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+
+
   },
   "author": "Anandhu Brad",
   "license": "ISC",

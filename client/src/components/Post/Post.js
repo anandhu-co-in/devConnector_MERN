@@ -83,13 +83,16 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
                             <p className="post-date">
                                 {comment.date}
                             </p>
-                        </div>
 
-                        {!auth.loading && auth.user._id===comment.user &&(
+                            {!auth.loading && auth.user._id===comment.user &&(
                             <button type="button" class="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
                                 <i class="fas fa-times"></i>
                             </button>
-                        )}
+                             )}
+
+                        </div>
+
+
 
 
                     </div>

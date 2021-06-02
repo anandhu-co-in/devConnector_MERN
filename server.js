@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.get("/",(req,res)=>{
-    res.send("worked");
+    res.send("API Running.. Worked");
 })
 
 

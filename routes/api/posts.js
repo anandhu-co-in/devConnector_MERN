@@ -57,7 +57,7 @@ router.post("/",mw,async (req,res)=>{
 //@desc  Get all posts
 //@access Private
 
-router.get("/",async (req,res)=>{
+router.get("/",tokenValidator,async (req,res)=>{
 
     try {
 

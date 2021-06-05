@@ -14,11 +14,7 @@ Still working on it
 3. Inside it run nunBoth, this will launch both backend server and font end end using concurrently
 
 
-<<<<<<< HEAD
 # This is the deployment branch
 
 
 # To deploy from deployment branch to the main branch of heroku -------->  git push heroku deployment:main
-=======
-# This is the development Branch
->>>>>>> master

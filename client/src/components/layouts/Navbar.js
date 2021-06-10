@@ -8,50 +8,34 @@ const Navbar = ({auth:{isAuthenticated,loading},logout}) => {
 
     //Links to display when loggedin
     const authLinks=(
-        <ul>
-
-            <li><Link to ='/profiles'>Developers</Link></li>
-            <li><Link to ='/posts'>Posts</Link></li>
-
-            <li>
-                <Link to ='/dashboard'>
-                    <i className='fas fa-user'></i>{' '}
-                    Dashboard
-                </Link>
-            </li>
-
-            <li>
-                <a onClick={logout} href='#!'>
-                    <i className='fas fa-sign-out-alt'></i>{' '}
-                    Logout
-                </a>
-            </li>
-        </ul>
+        <div class="nav-links">
+            <Link to="/profiles">Developers</Link>
+            <Link to="/posts">Posts</Link>
+            <Link to="/dashboard">Dashboard</Link>
+            <a onClick={logout} href='#!'><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
     );
 
     //Links to display when not logged in
     const guestLinks=(
-        <ul>
-            <li><Link to ='/profiles'>Developers</Link></li>
-            <li><Link to ='/register'>Register</Link></li>
-            <li><Link to ='/login'>Login</Link></li>
-        </ul>
+        <div class="nav-links">
+            <Link to="/profiles">Developers</Link>
+            <Link to="/register">Register</Link>
+            <Link to='/login'><i class="fas fa-sign-in-alt"></i> Sign In</Link>
+        </div>
     )
-
 
     return (
         <div>
-
-            <nav className="navbar bg-dark">
-            <h1>
-                <Link to ='/'><i className="fas fa-code"></i> DevConnector ----- W o R  k in pRogResS  ---   </Link>
-            </h1>
-            
-            {!loading && (<Fragment>{isAuthenticated?authLinks:guestLinks}</Fragment>)}
-
+            <nav class="main-nav">
+                <a class="logo">        
+                    <h2>
+                        <i class="fas fa-laptop-code"></i>{' '}
+                        devConnector
+                    </h2>
+                </a>
+                {!loading && (<Fragment>{isAuthenticated?authLinks:guestLinks}</Fragment>)}
             </nav>
-            
-            
         </div>
     )
 }

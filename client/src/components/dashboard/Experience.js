@@ -14,26 +14,43 @@ const Experience = ({experience,deleteExperience}) => {
     const experiences = experience.map((exp)=>{
 
         return(
-        <tr key={exp._id}>
-            <td className="hide-sm">{exp.company}</td>
-            <td className="hide-sm">{exp.title}</td>
-            <td>
+        // <tr key={exp._id}>
+        //     <td className="hide-sm">{exp.company}</td>
+        //     <td className="hide-sm">{exp.title}</td>
+        //     <td>
+        //         <Moment format='YYYY/MM/DD'>{exp.from}</Moment> - {' '}
+        //         {exp.to === null ? (
+        //             'Now'
+        //         ):(
+        //             <Moment format='YYYY/MM/DD'>{exp.to}</Moment>
+        //         )}
+
+        //     </td>
+
+        //     <td>
+        //         <button onClick={()=>deleteExperience(exp._id)} className="btn btn-danger">Delete</button> 
+        //         {/* I added the imported delete experience action in the onlick listener of delte button, so in a particlay row, that action will be called with that exp's id */}
+
+        //     </td>
+
+        // </tr>
+
+        <tr>
+            <td className="column1">{exp.company}</td>
+            <td className="column2">{exp.title}</td>
+            <td className="column3">
                 <Moment format='YYYY/MM/DD'>{exp.from}</Moment> - {' '}
                 {exp.to === null ? (
                     'Now'
                 ):(
                     <Moment format='YYYY/MM/DD'>{exp.to}</Moment>
                 )}
-
             </td>
-
-            <td>
-                <button onClick={()=>deleteExperience(exp._id)} className="btn btn-danger">Delete</button> 
-                {/* I added the imported delete experience action in the onlick listener of delte button, so in a particlay row, that action will be called with that exp's id */}
-
+            <td className="column4">
+                <button onClick={()=>deleteExperience(exp._id)} className="redDeleteButton"><i className="far fa-trash-alt"></i> Delete</button>
             </td>
-
         </tr>
+
 
         );
     });
@@ -42,7 +59,7 @@ const Experience = ({experience,deleteExperience}) => {
     return (
         <Fragment>
 
-            <h2 className="m-2">Experience Details</h2>
+            {/* <h2 className="m-2">Experience Details</h2>
 
             <table className="table">
                 <thead>
@@ -52,11 +69,24 @@ const Experience = ({experience,deleteExperience}) => {
                         <th className="hide-sm">Years</th>
                         <th>Edit</th>
                     </tr>
-                </thead>
+                </thead> */}
+
+
+    
+        <h3>Experience Details</h3>
+                    <table id="tablegeleral">
+                        <thead>
+                            <tr className="table100-head">
+                                <th className="column1">Company</th>
+                                <th className="column2">Title</th>
+                                <th className="column3">Years</th>
+                                <th className="column4">Options</th>
+                            </tr>
+                        </thead>
 
 {/*Calling the experience function which returns the experience HTMLS  which populates inside thead*/}
 
-                <thead>{experiences}</thead> 
+                <tbody>{experiences}</tbody> 
 
 
             </table>

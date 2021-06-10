@@ -37,7 +37,7 @@ const Login = ({login,isAuthenticated}) => {
 
     return (
         <Fragment>
-            
+{/*             
       <h1 className="large text-primary">Login</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
       <form className="form" onSubmit={e=>onSubmit(e)}>
@@ -60,6 +60,52 @@ const Login = ({login,isAuthenticated}) => {
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
+ */}
+
+
+<main className="main-container">
+        
+        <div className="left-side">
+            <div className="welcomemessage">
+                <h1>Welcome to DevConnector</h1>
+                <h4>A Social Network for Developers</h4>
+                <Link to="/register"><button className="primaryGreenButton">REGISTER</button></Link>
+            </div>
+        </div>
+
+        <div className="right-side">
+
+            <form className="loginform" onSubmit={e=>onSubmit(e)}>
+                <h3>SIGN IN TO YOUR ACCOUNT</h3>
+                <div className="input-group">
+                    <label>Email</label>
+                    <input type="text" placeholder="youremail@gmail.com" name="email" value={formData.email} onChange={e=>handleChange(e)}/>
+                    
+                </div>
+
+                <div className="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="******************" name="password" value={formData.password} onChange={e=>handleChange(e)}/>
+                </div>
+                
+                <div className="input-group">
+                    <input className="button" type="submit" value="SIGN IN"/>
+                </div>
+
+                <div className="input-group">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+    </main>
+
+
+
 
         </Fragment>
     )

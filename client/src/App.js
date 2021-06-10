@@ -48,15 +48,13 @@ return(
   <Router>
     <Fragment>
       <Navbar />
+
+        <Alert/>
         <Route exact path="/" component={Landing} />
+        <Route exact path="/Login" component={Login}/>
 
         <section className="container">
-
-          <Alert/>
-
           <Switch>
-
-            <Route exact path="/Login" component={Login}/>
             <Route exact path="/Register" component={Register}/>
             <Route exact path="/Profiles" component={Profiles}/>
             <Route exact path="/Profile/:id" component={IndividualProfile}/>

@@ -11,24 +11,40 @@ const Education = ({education,deleteEducation}) => {
     const experiences = education.map((edu)=>{
 
         return(
-        <tr key={edu._id}>
-            <td className="hide-sm">{edu.school}</td>
-            <td className="hide-sm">{edu.degree}</td>
-            <td>
+        // <tr key={edu._id}>
+        //     <td className="hide-sm">{edu.school}</td>
+        //     <td className="hide-sm">{edu.degree}</td>
+        //     <td>
+        //         <Moment format='YYYY/MM/DD'>{edu.from}</Moment> - {' '}
+        //         {edu.to === null ? (
+        //             'Now'
+        //         ):(
+        //             <Moment format='YYYY/MM/DD'>{edu.to}</Moment>
+        //         )}
+
+        //     </td>
+
+        //     <td>
+        //         <button onClick={()=>deleteEducation(edu._id)} className="btn btn-danger">Delete</button>
+
+        //     </td>
+
+        // </tr>
+
+        <tr>
+            <td className="column1">{edu.school}</td>
+            <td className="column2">{edu.degree}</td>
+            <td className="column3">
                 <Moment format='YYYY/MM/DD'>{edu.from}</Moment> - {' '}
-                {edu.to === null ? (
-                    'Now'
-                ):(
-                    <Moment format='YYYY/MM/DD'>{edu.to}</Moment>
-                )}
-
+                    {edu.to === null ? (
+                        'Now'
+                    ):(
+                        <Moment format='YYYY/MM/DD'>{edu.to}</Moment>
+                    )}
             </td>
-
-            <td>
-                <button onClick={()=>deleteEducation(edu._id)} className="btn btn-danger">Delete</button>
-
+            <td className="column4">
+                <button onClick={()=>deleteEducation(edu._id)} className="redDeleteButton"><i className="far fa-trash-alt"></i> Delete</button>
             </td>
-
         </tr>
 
         );
@@ -38,21 +54,21 @@ const Education = ({education,deleteEducation}) => {
     return (
         <Fragment>
 
-            <h2 className="m-2">Education Details</h2>
-
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>School</th>
-                        <th className="hide-sm">Degree</th>
-                        <th className="hide-sm">Years</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
+                
+        <h3>Education Details</h3>
+                    <table id="tablegeleral">
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">School</th>
+                                <th class="column2">Degree</th>
+                                <th class="column3">Years</th>
+                                <th class="column4">Options</th>
+                            </tr>
+                        </thead>
 
 {/*Calling the experience function which returns the experience HTMLS  which populates inside thead*/}
 
-                <thead>{experiences}</thead> 
+                <tbody>{experiences}</tbody> 
 
 
             </table>

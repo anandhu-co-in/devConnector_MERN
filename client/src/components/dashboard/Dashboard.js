@@ -29,10 +29,7 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
 
     return  loading && profile===null ?<Spinner/>:<Fragment>
 
-        <h1 className="large text-primary">Dashboard</h1>
-        <p className="lead">
-            <i className="fas fa-user"></i> Welcome {user && user.name}
-        </p>
+        <h1>Welcome {user && user.name}e!<br/><br/></h1>
 
         {/* If profile exists, then dashboard actions dubb compoents is displayed */}
         {profile!==null?<Fragment> 
@@ -40,16 +37,12 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
             <Experience experience={profile.experience}/> 
             <Education education={profile.education}/>  
 
-            <div className="my-2">
-                <button onClick={()=>{console.log("Delete account cicked"); deleteAccount()}} className="btn btn-danger">
-                    <i className="fa fa-user"></i> Delete My Account
-                </button>
-            </div>
+            <button class="redDeleteButton deleteAccountButton" onClick={()=>{console.log("Delete account cicked"); deleteAccount()}}><i class="far fa-trash-alt"></i> Delete Account </button>
 
             </Fragment> : <Fragment> 
             
-            <p>You haven't yet setup your profile.</p> <br/>
-            <Link to ='/create-profile' className="btn btn-primary">Create Profile</Link>
+            <h4>You do not have a profile yet!<br/><br/></h4>
+            <Link to ='/create-profile'><button class="greenButton"><i class="fas fa-user-graduate"></i> Create Profile</button></Link>
             
         </Fragment> }
 

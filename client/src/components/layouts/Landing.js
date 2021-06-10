@@ -1,49 +1,36 @@
-import React from 'react'
-import {Link, Redirect} from 'react-router-dom'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const Landing = ({isAuthenticated}) => {
+const Landing = ({ isAuthenticated }) => {
+  //Landing page should not be accessible if logged in already
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
-    
-    //Landing page should not be accessible if logged in already
-    if(isAuthenticated){
-        return <Redirect to ='/dashboard'/>
-    }
+  return (
 
+    <section className="landing">
+      <div className="banner">
+        <h1>devConnector</h1>
+        <h3>Clone of Brad Traversy's devConnector</h3>
+      </div>
 
-    return (
-        <div>
-            <section className="landing">
-            <div className="dark-overlay">
-            <div className="landing-inner">
-                <h1 className="x-large">Developer Connector</h1>
-                <p className="lead">
-                Create a developer profile/portfolio, share posts and get help from
-                other developers
-                </p>
-                <div className="buttons">
-                <Link to="register" className="btn btn-primary">Sign Up</Link>
-                <Link to="login" className="btn btn-light">Login</Link>
-                </div>
-            </div>
-            </div>
-            </section>
-        </div>
-    )
-}
+      <div className="landing-button">
+        <Link to="/register"><button className="normalButtonButton leftbtn">Sign Up</button></Link>
+        <Link to="/login"><button className="primaryGreenButton rightbtn">Login</button></Link>
+      </div>
+    </section>
+  );
+};
 
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool,
+};
 
-Landing.propTypes={
-    isAuthenticated:PropTypes.bool,
-}
-
-const mapStateToProps = state => ({
-    isAuthenticated:state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
-
 export default connect(mapStateToProps)(Landing);
-
-
-

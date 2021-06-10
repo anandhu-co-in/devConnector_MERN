@@ -73,13 +73,14 @@ const Register = ({setAlert,register,isAuthenticated}) => {
 
     //If user is logged in,redirect to the dashboard. We dont need to see register page
     if(isAuthenticated){
+      console.log("Redirecting to dashboard")
       return <Redirect to ='/dashboard'/>;
     }
 
     return (
         <Fragment>
             
-      <h1 className="large text-primary">Sign Up</h1>
+      {/* <h1 className="large text-primary">Sign Up</h1>
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
       <form className="form" onSubmit={e=>onSubmit(e)}>
         <div className="form-group">
@@ -115,6 +116,52 @@ const Register = ({setAlert,register,isAuthenticated}) => {
       <p className="my-1">
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
+ */}
+
+
+
+
+  <form className="register-form" onSubmit={e=>onSubmit(e)}>
+  <h3>CREATE ACCOUNT</h3>
+  <div className="input-group">
+    <label htmlFor>Name</label>
+    <input type="text" placeholder="Name" name="name" value={formData.name} onChange={e=>handleChange(e)} />
+  </div>
+  <div className="input-group">
+    <label htmlFor>Email</label>
+    <input type="email" placeholder="Name" name="email" value={formData.email} onChange={e=>handleChange(e)} />
+  </div>
+  <div className="input-group">
+    <label htmlFor>Password</label>
+    <input type="password" placeholder="Name" name="password" value={formData.password} onChange={e=>handleChange(e)} />
+ 
+  </div>
+  <div className="input-group">
+    <label htmlFor>Confirm Password</label>
+    <input type="password" placeholder="Name" name="password2" value={formData.password2} onChange={e=>handleChange(e)} />
+
+  </div>
+  <div className="input-group">
+    <input className="button" type="submit" defaultValue="SIGN IN" />
+  </div>
+  <div className="input-group">
+    <Link to="/login">Already have an account?</Link>
+  </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </Fragment>
     )

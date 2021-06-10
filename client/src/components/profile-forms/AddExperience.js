@@ -142,7 +142,7 @@ const AddExperience = ({addExperience,history}) => {
       <textarea placeholder="Job Description" name="bio" defaultValue={""} />
     </div>
     <button type="submit" className="primaryGreenButton">Submit</button>
-    <button className="normalButtonButton"><i className="fas fa-arrow-circle-left" /> Go Back</button>
+    <Link to='/dashboard'><button type="button" className="normalButtonButton"><i className="fas fa-arrow-circle-left" /> Go Back</button></Link>
   </form>
 </>
 

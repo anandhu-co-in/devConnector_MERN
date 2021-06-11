@@ -285,6 +285,7 @@ h1,h2,h3,h4{
 
 .developerDiv div{
  margin: 0 20px;
+ width: 240px;
 }
 
 .developerDiv h2,

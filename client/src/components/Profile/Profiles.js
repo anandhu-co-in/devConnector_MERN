@@ -22,11 +22,8 @@ const Profiles = ({profile:{profiles,loading},getProfiles}) => {
         loading?<Spinner/>:
 
         <Fragment>
-            <h1 className="large text-primary">Developers</h1>
-            <p className="lead">
-                <i className="fab fa-connectdevelop"></i> Browse and connect with developers
-            </p>
-            <div className="profiles">
+            <h1>Developers!<br/></h1>
+            <h4>Browse and connect with developers!<br/><br/></h4>
 
                 {profiles.length>0 ?
                 
@@ -34,7 +31,7 @@ const Profiles = ({profile:{profiles,loading},getProfiles}) => {
                     
                 :  <h1>No Profiles found</h1> }
                 
-            </div>
+
         </Fragment>
  
     )

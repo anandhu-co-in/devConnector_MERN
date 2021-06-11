@@ -107,9 +107,6 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
 
                         </div>
 
-
-
-
                     </div>
                 )}
 

@@ -20,19 +20,33 @@ const IndividualProfile = ({match, getProfileByUserId,profile:{profile,loading,r
 
             {profile==null||loading?<Spinner/>:<Fragment>
 
-                <Link to='/profiles' className="btn btn-light">Back to Profiles</Link>
+                <Link to='/profiles'><button class="normalButtonButton"><i class="fas fa-arrow-circle-left"></i> Back to Profiles</button></Link>
 
-                {auth.isAuthenticated && auth.loading==false && auth.user._id===profile.user._id && <Link to="/edit-profile" className="btn btn-light">Edit</Link>}
+                {auth.isAuthenticated && auth.loading==false && auth.user._id===profile.user._id && <Link to="/edit-profile">
+                      <button class="normalButtonButton"><i class="fas fa-edit"></i> Edit Profile</button>
+                    </Link>}
                 
-                <div className="profile-grid my-1">
-                    <ProfileTop profile={profile}/>
-                    <ProfileAbout profile={profile}/>
-                    <ProfileExperience experience={profile.experience}/>
-                    <ProfileEducation education={profile.education}/>
-                    <ProfileGIthub githubusername={profile.githubusername}/>   
-                {/* Hope i need to comeback here to fix if githubusernme is empty */}
+                <ProfileTop profile={profile}/>
+                <ProfileAbout profile={profile}/>
 
+
+
+                <br /><h2><i className="fas fa-graduation-cap" /> Experience and Education</h2>
+
+                <div className="expEdu">
+                    <div className="experience">
+                        <h2>Experience</h2><br />
+                        <ProfileExperience experience={profile.experience}/>
+                    </div>
+                    <div className="education">
+                        <h2>Education</h2><br/>
+                        <ProfileEducation education={profile.education}/>
+                    </div>
                 </div>
+
+
+                <ProfileGIthub githubusername={profile.githubusername}/>   
+                {/* Hope i need to comeback here to fix if githubusernme is empty */}
 
    
             </Fragment> 

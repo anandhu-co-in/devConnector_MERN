@@ -139,7 +139,7 @@ const AddExperience = ({addExperience,history}) => {
     </div>
     <div className="input-group">
       <label>Bio</label>
-      <textarea placeholder="Job Description" name="bio" defaultValue={""} />
+      <textarea placeholder="Job Description" name="description"  value={description} onChange={(e) => onChange(e)} defaultValue={""} />
     </div>
     <button type="submit" className="primaryGreenButton">Submit</button>
     <Link to='/dashboard'><button type="button" className="normalButtonButton"><i className="fas fa-arrow-circle-left" /> Go Back</button></Link>

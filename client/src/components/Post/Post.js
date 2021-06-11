@@ -37,12 +37,16 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
         
         loading || post===null ?<Spinner/> : 
         <Fragment>
-            <Link className="btn" to="/posts">Back to Posts</Link>
+            {/* <Link className="btn" to="/posts">Back to Posts</Link> */}
+            <Link to="/posts"><button className="normalButtonButton"><i className="fas fa-arrow-circle-left" /> Back to Posts</button></Link>
+            <br/>
+            <br/>
+            <h1><i class="fas fa-pen-nib"></i> Discussion on Post</h1><br></br>
             <Postitem post={post} showActions={false}/>
 
             {/* Add comments, Better separate this into separate component as Brad did, but i just added it here to finish the course quickly */}
 
-                <div className="post-form">
+                {/* <div className="post-form">
                     <div className="bg-primary p">
                     <h3>Leave A Comment</h3>
                     </div>
@@ -57,11 +61,22 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
                     ></textarea>
                     <input type="submit" className="btn btn-dark my-1" value="Submit" />
                     </form>
+                </div> */}
+
+                <br/>
+                <div className="create-post">
+                    <h2>Add Comment...</h2>
+                    <form className="create-post-form" onSubmit={e=>onSubmit(e)}>
+                        <textarea onChange={e=>onChange(e)} name="text" cols={30} rows={5} placeholder="Leave your comment" required defaultValue={""} />
+                        <input type="submit" className="greenButton" defaultValue="Post" />
+                    </form>
                 </div>
+
+                
 
             {/* Lopp through the comments within post and display */}
 
-            <div className="comments">
+            {/* <div className="comments">
 
                 {post.comments?.map((comment)=>
                 
@@ -98,7 +113,38 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
                     </div>
                 )}
 
+            </div> */}
+
+            
+            {post.comments?.map((comment)=>
+            
+            <div class="posts-preview">
+                <div class="profilepic">
+                    <img src={comment.avatar} alt=""/>
+                    {comment.name}
+                </div>
+                <div class="posts-preview-right">
+                    {comment.text}
+                    <div> {comment.date}</div>
+                    <div>
+
+                    {!auth.loading && auth.user._id===comment.user &&(
+                            // <button type="button" class="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
+                            //     <i class="fas fa-times"></i>
+                            // </button>
+                            <button onClick={e=>deleteComment(post._id,comment._id)} class="normalButtonButton"><i class="far fa-trash-alt"></i> Delete</button>
+                             )}
+
+                        {/* <button class="normalButtonButton"><i class="fas fa-thumbs-up"></i> 12</button>
+                        <button class="normalButtonButton"><i class="fas fa-thumbs-down"></i> 0</button>
+                        <button class="greenButton">Discussion (0)</button>
+                        <button class="normalButtonButton"><i class="far fa-trash-alt"></i> Delete</button> */}
+                    </div>
+                </div>
             </div>
+
+            )}
+
 
         </Fragment>
 

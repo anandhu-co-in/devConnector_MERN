@@ -22,22 +22,35 @@ const CreatePostForm = ({addPost}) => {
 
 
     return (
-      <div className="post-form">
-        <div className="bg-primary p">
-          <h3>Say Something...</h3>
-        </div>
-        <form className="form my-1" onSubmit={e=>onSubmit(e)}>
-          <textarea
-            onChange={e=>onChange(e)}
-            name="text"
-            cols="30"
-            rows="5"
-            placeholder="Create a post"
-            required
-          ></textarea>
-          <input type="submit" className="btn btn-dark my-1" value="Submit" />
+      // <div className="post-form">
+      //   <div className="bg-primary p">
+      //     <h3>Say Something...</h3>
+      //   </div>
+      //   <form className="form my-1" onSubmit={e=>onSubmit(e)}>
+      //     <textarea
+      //       onChange={e=>onChange(e)}
+      //       name="text"
+      //       cols="30"
+      //       rows="5"
+      //       placeholder="Create a post"
+      //       required
+      //     ></textarea>
+      //     <input type="submit" className="btn btn-dark my-1" value="Submit" />
+      //   </form>
+      // </div>
+
+      <div className="create-post">
+        <h2>Say something...</h2>
+        <form className="create-post-form" onSubmit={e=>onSubmit(e)}>
+          <textarea name="text" cols={30} rows={5} placeholder="Create a post" required defaultValue={""} onChange={e=>onChange(e)} />
+          <button type="submit" className="primaryGreenButton">Post</button>
         </form>
       </div>
+
+
+
+
+
     )
 }
 

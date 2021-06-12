@@ -621,7 +621,7 @@ input,textarea,select{
 .devnotes{
   color: rgba(253, 10, 10, 0.863);
   background:rgba(0, 0, 0, 0.336);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);

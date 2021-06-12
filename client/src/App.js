@@ -48,7 +48,7 @@ return(
   <Router>
     <Fragment>
       <Navbar />
-
+      <p className="devnotes">WARNING : This is a demo MERN Stack application. Please do not post any sensitive information in this. © mail.anandhu@gmail.com<br/></p>
         <Route exact path="/" component={Landing} />
         <Route exact path="/Login" component={Login}/>
 

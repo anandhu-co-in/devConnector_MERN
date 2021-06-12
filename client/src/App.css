@@ -28,6 +28,7 @@ body{
   top: 0;
   width: 100%;
   border-bottom: 1px solid rgba(218, 218, 218, 0.404);
+  position: fixed;
 }
 
 .logo{
@@ -45,8 +46,8 @@ body{
 .nav-links a{
   color: white;
   text-decoration: none;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
   transition: color .1s ease-in
 }
 
@@ -533,6 +534,7 @@ a{
   /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.781)),url('./img/showcase.jpg'); */
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.781)),url('./img/landing2.jpg');    
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .landing .banner{
@@ -571,7 +573,8 @@ input,textarea,select{
   transition: all 2s ease;
 }
 
-.alert-success{
+.alert-success,
+.alert-Success{
   background: #4aa96c;
   transition: all 2s ease;
 }
@@ -602,4 +605,11 @@ input,textarea,select{
 
 .profilepic img{
   margin-bottom: 5px;
+}
+
+
+/* I found this solution to hide the container on landing and login page, using + which selects the adjescent of the first one */
+.landing + .container,
+.main-container+ .container{
+  display: none;
 }

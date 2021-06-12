@@ -32,7 +32,7 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
 
         <Alert/>
 
-        <h1>Welcome {user && user.name}e!<br/><br/></h1>
+        <h1>Welcome {user && user.name}!<br/><br/></h1>
 
         {/* If profile exists, then dashboard actions dubb compoents is displayed */}
         {profile!==null?<Fragment> 
@@ -40,14 +40,13 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
             <Experience experience={profile.experience}/> 
             <Education education={profile.education}/>  
 
-            <button class="redDeleteButton deleteAccountButton" onClick={()=>{console.log("Delete account cicked"); deleteAccount()}}><i class="far fa-trash-alt"></i> Delete Account </button>
-
             </Fragment> : <Fragment> 
             
             <h4>You do not have a profile yet!<br/><br/></h4>
             <Link to ='/create-profile'><button class="greenButton"><i class="fas fa-user-graduate"></i> Create Profile</button></Link>
-            
+                
         </Fragment> }
+        <button class="redDeleteButton deleteAccountButton" onClick={()=>{console.log("Delete account cicked"); deleteAccount()}}><i class="far fa-trash-alt"></i> Delete Account </button>
 
     
     </Fragment>

@@ -95,7 +95,9 @@ export const getGitHubRepos=(username)=>async dispatch=>{
 
     //Get all the user profiles and add to the state
     try {    
+        console.log('calling gihub api')
         const res = await axios.get(`/api/profile/github/${username}`);
+        console.log('called gihub api from frontend')
         dispatch({
             type:GET_REPOS,
             payload:res.data
@@ -324,7 +326,7 @@ export const addExperience = (formData,history,edit=false) => async dispatch=>{
                     dispatch({type : CLEAR_PROFILE});
                     dispatch({type : ACCOUNT_DELETED});
     
-                    dispatch(setAlert('Account Deleted Removed','Success'))
+                    dispatch(setAlert('Account Deleted','Success'))
     
                 } catch (err) {
     

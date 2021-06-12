@@ -15,7 +15,9 @@ const ProfileGIthub = ({githubusername,getGitHubRepos,repos}) => {
     return (
 
           <Fragment>
+
               <br/><h2><i class="fab fa-github"></i> Github Repos</h2>
+              {!repos.length>0 && <><br/><h4>No public repos available for username : {githubusername}</h4></>}
 
               {repos.map(repo=>
             

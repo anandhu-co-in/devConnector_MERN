@@ -364,9 +364,14 @@ router.get('/github/:username',async (req,res)=>{
             'user-agent': 'node.js',
             Authorization: `token ${config.get('githubtoken')}`
           };
+         
           
-
-        const gitHubResponse = await axios.get(uri, { headers });
+        console.log("Github uri and headers ----> ")
+        console.log(uri)
+        console.log(headers)
+        const gitHubResponse = await axios.get(uri, headers );
+        console.log("Github response --- >")
+        console.log(gitHubResponse)
         res.json(gitHubResponse.data);//Seems like gitHubResponse.data is already in json, i tried to parse json from it, which gave error
 
     }

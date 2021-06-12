@@ -153,20 +153,6 @@ const Register = ({setAlert,register,isAuthenticated}) => {
   </div>
 </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </Fragment>
     )
 }

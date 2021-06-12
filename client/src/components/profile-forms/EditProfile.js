@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Link,withRouter} from 'react-router-dom' // Withourouter thing is to get the history object, which we will need to pass into the create profile action
 import {createProfile,getCurrnetProfile} from '../../redux/actions/profile'
 import {connect} from 'react-redux'
+import Alert from '../layouts/Alert';
 
 
 
@@ -200,9 +201,10 @@ const EditProfile = ({profile:{profile,loading},createProfile,getCurrnetProfile,
 
 <Fragment>
 
+<Alert/>
 
 
-<h1>Create profile!<br/></h1>
+<h1>Edit profile!<br/></h1>
 <h4>Let's get some information to make your profile stand out</h4>
 
  <form className="create-profile-form" onSubmit={e => onSubmit(e)}>

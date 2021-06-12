@@ -12,7 +12,7 @@ const Alert = props => {
                 {alert.msg}
             </div>
         ))
-        
+             
     )
 }
 
@@ -26,3 +26,10 @@ const mapStateToProps = state =>{
 //https://stackoverflow.com/questions/45573277/react-expected-an-assignment-or-function-call-and-instead-saw-an-expression
 
 export default connect(mapStateToProps)(Alert) //This component doesnt call any action, we obtain the valuse from store.
+
+
+{/* <div className="alerts">
+    <div className="alert alert-danger">Error Occured</div>
+    <div className="alert alert-success">Error Occured</div>
+    <div className="alert alert-success">Error Occured</div>
+</div> */}

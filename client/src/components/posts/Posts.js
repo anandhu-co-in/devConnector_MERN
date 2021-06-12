@@ -5,6 +5,7 @@ import Spinner from '../layouts/Spinner'
 import {getPosts} from '../../redux/actions/post'
 import Postitem from './Postitem'
 import CreatePostForm from './CreatePostForm'
+import Alert from '../layouts/Alert';
 
 const Posts = ({post:{posts,loading},getPosts}) => {
 
@@ -38,6 +39,8 @@ const Posts = ({post:{posts,loading},getPosts}) => {
         // </Fragment>
 
         <Fragment>
+
+            <Alert/>
 
             <h1><i class="fas fa-pen-nib"></i> POSTS</h1> <br/> <br/>
 

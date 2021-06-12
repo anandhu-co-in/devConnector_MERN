@@ -11,6 +11,7 @@ import { DashboardActions } from './DashboardActions';
 
 import Experience from './Experience';
 import Education from './Educaction';
+import Alert from '../layouts/Alert';
 
 
 const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile,loading}}) => {
@@ -28,6 +29,8 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
     //Investigate : - Whey did i add profile===null below??
 
     return  loading && profile===null ?<Spinner/>:<Fragment>
+
+        <Alert/>
 
         <h1>Welcome {user && user.name}e!<br/><br/></h1>
 

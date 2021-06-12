@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Link,withRouter} from 'react-router-dom' // Withourouter thing is to get the history object, which we will need to pass into the create profile action
 import {createProfile} from '../../redux/actions/profile'
 import {connect} from 'react-redux'
+import Alert from '../layouts/Alert';
 
 
 
@@ -174,6 +175,7 @@ const CreateProfile = ({createProfile,history}) => {
 
 <Fragment>
 
+<Alert/>
 
 
 <h1>Create profile!<br/></h1>

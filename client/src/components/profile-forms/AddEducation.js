@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
-import {addEducation} from '../../redux/actions/profile'
-import {connect} from 'react-redux'
+import {addEducation} from '../../redux/actions/profile';
+import {connect} from 'react-redux';
+import Alert from '../layouts/Alert';
+
 
 const AddEducation = ({addEducation,history}) => {
   const [formData, setFormData] = useState({
@@ -98,6 +100,7 @@ const AddEducation = ({addEducation,history}) => {
     // </Fragment>
 
 <>
+  <Alert/>
   <h1>Add Your Education<br /></h1>
   <h4><i className="fas fa-graduation-cap" /> Add any school, bootcamp, etc that you have attended</h4>
   <form className="create-profile-form"onSubmit={e=>onSubmit(e)}>

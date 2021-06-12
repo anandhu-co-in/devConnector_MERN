@@ -6,6 +6,7 @@ import {PropTypes} from 'prop-types'
 import {connect} from 'react-redux'
 import {setAlert} from '../../redux/actions/alert'
 import {register} from '../../redux/actions/auth'
+import Alert from '../layouts/Alert';
 
 
 import axios from 'axios'
@@ -122,6 +123,9 @@ const Register = ({setAlert,register,isAuthenticated}) => {
 
 
   <form className="register-form" onSubmit={e=>onSubmit(e)}>
+ 
+  <Alert/>
+
   <h3>CREATE ACCOUNT</h3>
   <div className="input-group">
     <label htmlFor>Name</label>

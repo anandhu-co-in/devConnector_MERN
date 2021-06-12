@@ -49,7 +49,6 @@ return(
     <Fragment>
       <Navbar />
 
-        <Alert/>
         <Route exact path="/" component={Landing} />
         <Route exact path="/Login" component={Login}/>
 

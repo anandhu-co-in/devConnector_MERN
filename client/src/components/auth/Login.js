@@ -4,6 +4,7 @@ import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types' 
 import {login} from '../../redux/actions/auth'
+import Alert from '../layouts/Alert';
 
 
 const Login = ({login,isAuthenticated}) => {
@@ -76,6 +77,7 @@ const Login = ({login,isAuthenticated}) => {
         <div className="right-side">
 
             <form className="loginform" onSubmit={e=>onSubmit(e)}>
+                <Alert/>
                 <h3>SIGN IN TO YOUR ACCOUNT</h3>
                 <div className="input-group">
                     <label>Email</label>
@@ -93,7 +95,7 @@ const Login = ({login,isAuthenticated}) => {
                 </div>
 
                 <div className="input-group">
-                    <a href="#">Forgot Password?</a>
+                    <Link to="/register">Do not have and account?</Link>
                 </div>
 
             </form>

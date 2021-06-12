@@ -5,6 +5,7 @@ import Spinner from '../layouts/Spinner'
 import {getPost,addComment,deleteComment} from '../../redux/actions/post'
 import Postitem from '../posts/Postitem'
 import { Link } from 'react-router-dom'
+import Alert from '../layouts/Alert'
 
 const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth}) => {
 
@@ -37,6 +38,9 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
         
         loading || post===null ?<Spinner/> : 
         <Fragment>
+
+            <Alert/>
+
             {/* <Link className="btn" to="/posts">Back to Posts</Link> */}
             <Link to="/posts"><button className="normalButtonButton"><i className="fas fa-arrow-circle-left" /> Back to Posts</button></Link>
             <br/>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import {addExperience} from '../../redux/actions/profile'
 import {connect} from 'react-redux'
+import Alert from '../layouts/Alert';
 
 const AddExperience = ({addExperience,history}) => {
   const [formData, setFormData] = useState({
@@ -101,6 +102,7 @@ const AddExperience = ({addExperience,history}) => {
 
 
 <>
+  <Alert/>
   <h1>Add New Experience<br /></h1>
   <h4><i className="fas fa-code-branch" /> Add any developer/programming positions that you have had in the past</h4>
   <form className="create-profile-form" onSubmit={e=>onSubmit(e)}>

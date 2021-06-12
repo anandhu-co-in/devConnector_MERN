@@ -9,9 +9,9 @@ const Navbar = ({auth:{isAuthenticated,loading},logout}) => {
     //Links to display when loggedin
     const authLinks=(
         <div class="nav-links">
+            <Link to="/dashboard">Dashboard</Link>
             <Link to="/profiles">Developers</Link>
             <Link to="/posts">Posts</Link>
-            <Link to="/dashboard">Dashboard</Link>
             <a onClick={logout} href='#!'><i class="fas fa-sign-out-alt"></i> Sign Out</a>
         </div>
     );

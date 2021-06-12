@@ -5,6 +5,12 @@
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
+h1,h2,h3,h4{
+  color: white;
+}
+
+
 body{
   background: linear-gradient(0deg, rgba(83, 83, 156, 0.308), rgba(85, 78, 81, 0.747)), url('./img/lauchbackground.jpg');
   background-size: cover;
@@ -181,10 +187,6 @@ body{
 
 /* Dashboard */
 
-h1,h2,h3,h4{
-    color: white;
-}
-
 .container{
   max-width: 1200px;
   margin: auto;
@@ -333,6 +335,7 @@ h1,h2,h3,h4{
   justify-content: space-around;
   margin-top: 10px;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.205);
+  color: white;
   
 }
 
@@ -556,4 +559,47 @@ a{
 
 input,textarea,select{
   background:rgba(255, 255, 255, 0.932)
+}
+
+
+/* Alert */
+.alert{
+  padding: 10px 20px;
+  color: white;
+  border-radius: 3px;
+  margin: 10px 0;
+  transition: all 2s ease;
+}
+
+.alert-success{
+  background: #4aa96c;
+  transition: all 2s ease;
+}
+.alert-danger{
+  background: #dc3545;
+  transition: all 2s ease;
+}
+
+
+
+/* CSS FIXES */
+
+.dashboardActions a,
+.container a{
+  margin-right: 10px;
+}
+
+.posts-preview button,
+.create-profile-form button{
+  margin-right: 10px;
+}
+
+
+.profilelinks a{
+  color: white;
+  text-decoration: none;
+}
+
+.profilepic img{
+  margin-bottom: 5px;
 }

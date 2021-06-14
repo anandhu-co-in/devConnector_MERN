@@ -13,6 +13,7 @@ h1,h2,h3,h4{
 
 body{
   background: linear-gradient(0deg, rgba(83, 83, 156, 0.308), rgba(85, 78, 81, 0.747)), url('./img/lauchbackground.jpg');
+  /* background: rgb(6, 40, 59); */
   background-size: cover;
   background-attachment: fixed;
 }
@@ -619,8 +620,8 @@ input,textarea,select{
 /* For developer messages etc */
 
 .devnotes{
-  color: rgba(253, 10, 10, 0.863);
-  background:rgba(0, 0, 0, 0.336);
+  color: rgba(255, 255, 255, 0.863);
+  background:rgba(17, 17, 17, 0.336);
   position: fixed;
   bottom: 0;
   left: 50%;

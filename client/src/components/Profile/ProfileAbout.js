@@ -18,14 +18,14 @@ const ProfileAbout = ({profile}) => {
         //   </div>
         // </div>
 
-        <div class="bioSkillset">
+        <div className="bioSkillset">
         <h2>{profile.user.name.split(' ')[0]}'s Bio</h2>
         {profile.bio}
         <h2>Skill Set</h2>
 
-        <div class="skillset">
-            {profile.skills.map(skill=>
-              <div class="skill"><i class="fas fa-check"></i> {skill}</div>
+        <div className="skillset">
+            {profile.skills.map((skill,index)=>
+              <div key={index} className="skill"><i className="fas fa-check"></i> {skill}</div>
               )} 
 
         </div>

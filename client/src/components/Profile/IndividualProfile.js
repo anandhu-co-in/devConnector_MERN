@@ -20,10 +20,10 @@ const IndividualProfile = ({match, getProfileByUserId,profile:{profile,loading,r
 
             {profile==null||loading?<Spinner/>:<Fragment>
 
-                <Link to='/profiles'><button class="normalButtonButton"><i class="fas fa-arrow-circle-left"></i> Back to Profiles</button></Link>
+                <Link to='/profiles'><button className="normalButtonButton"><i className="fas fa-arrow-circle-left"></i> Back to Profiles</button></Link>
 
                 {auth.isAuthenticated && auth.loading==false && auth.user._id===profile.user._id && <Link to="/edit-profile">
-                      <button class="normalButtonButton"><i class="fas fa-edit"></i> Edit Profile</button>
+                      <button className="normalButtonButton"><i className="fas fa-edit"></i> Edit Profile</button>
                     </Link>}
                 
                 <ProfileTop profile={profile}/>

@@ -36,18 +36,18 @@ const ProfileItem = ({profileitem}) => {
 
 
 
-    <div class="developerDiv">
-        <div class="profilepic">
+    <div className="developerDiv">
+        <div className="profilepic">
           <img src={profileitem.user.avatar} alt=""/>
         </div>
-        <div class="detail">
+        <div className="detail">
             <h2>{profileitem.user.name}</h2>
             <h4>{profileitem.status}</h4>
             <h4>{profileitem.location}</h4>
             <br />
-            <Link to={`/profile/${profileitem.user._id}`}><button class="greenButton"><i class="fas fa-user-graduate"></i> View Profile</button></Link>
+            <Link to={`/profile/${profileitem.user._id}`}><button className="greenButton"><i className="fas fa-user-graduate"></i> View Profile</button></Link>
         </div>
-        <div class="skills">
+        <div className="skills">
 
         {profileitem.skills.slice(0,4).map((skill,index)=>{return(
                 
@@ -58,15 +58,15 @@ const ProfileItem = ({profileitem}) => {
                 // </li>
                 // )
 
-                <div key={index} class="skill"><i class="fas fa-check"></i> {skill}</div>
+                <div key={index} className="skill"><i className="fas fa-check"></i> {skill}</div>
                 )
 
                 })}
 
-              {/* <div class="skill"><i class="fas fa-check"></i> Skill</div>
-              <div class="skill"><i class="fas fa-check"></i> Skill</div>
-              <div class="skill"><i class="fas fa-check"></i> Skill</div>
-              <div class="skill"><i class="fas fa-check"></i> Skill</div> */}
+              {/* <div className="skill"><i className="fas fa-check"></i> Skill</div>
+              <div className="skill"><i className="fas fa-check"></i> Skill</div>
+              <div className="skill"><i className="fas fa-check"></i> Skill</div>
+              <div className="skill"><i className="fas fa-check"></i> Skill</div> */}
         </div>
     </div>
 

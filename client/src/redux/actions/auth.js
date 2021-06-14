@@ -56,6 +56,8 @@ export const register = ({name,email,password}) => async dispatch =>{
 
 export const loadUser = () => async dispatch => {
 
+
+    console.log('Loading user token from local storage with token')
     //If token exists in locas storage set it to axios headers'  'x-auth-token"
     if(localStorage.token){
         setAuthToken(localStorage.token)
@@ -63,8 +65,8 @@ export const loadUser = () => async dispatch => {
 
 
     try{
-        const res=await axios.get('api/auth');
-
+        console.log(axios.defaults.headers.common['x-auth-token'])
+        const res=await axios.get('/api/auth');
         dispatch({
             type :USER_LOADED,
             payload:res.data

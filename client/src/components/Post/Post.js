@@ -6,6 +6,7 @@ import {getPost,addComment,deleteComment} from '../../redux/actions/post'
 import Postitem from '../posts/Postitem'
 import { Link } from 'react-router-dom'
 import Alert from '../layouts/Alert'
+import Moment from 'react-moment'
 
 const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth}) => {
 
@@ -45,7 +46,7 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
             <Link to="/posts"><button className="normalButtonButton"><i className="fas fa-arrow-circle-left" /> Back to Posts</button></Link>
             <br/>
             <br/>
-            <h1><i class="fas fa-pen-nib"></i> Discussion on Post</h1><br></br>
+            <h1><i className="fas fa-pen-nib"></i> Discussion on Post</h1><br></br>
             <Postitem post={post} showActions={false}/>
 
             {/* Add comments, Better separate this into separate component as Brad did, but i just added it here to finish the course quickly */}
@@ -104,8 +105,8 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
                             </p>
 
                             {!auth.loading && auth.user._id===comment.user &&(
-                            <button type="button" class="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
-                                <i class="fas fa-times"></i>
+                            <button type="button" className="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
+                                <i className="fas fa-times"></i>
                             </button>
                              )}
 
@@ -119,27 +120,27 @@ const Post = ({getPost,post:{post,loading},match,addComment,deleteComment,auth})
             
             {post.comments?.map((comment)=>
             
-            <div class="posts-preview">
-                <div class="profilepic">
+            <div className="posts-preview">
+                <div className="profilepic">
                     <img src={comment.avatar} alt=""/>
                     {comment.name}
                 </div>
-                <div class="posts-preview-right">
+                <div className="posts-preview-right">
                     {comment.text}
-                    <div> {comment.date}</div>
+                    <div> <Moment format='LL'>{comment.date}</Moment></div>
                     <div>
 
                     {!auth.loading && auth.user._id===comment.user &&(
-                            // <button type="button" class="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
-                            //     <i class="fas fa-times"></i>
+                            // <button type="button" className="btn btn-danger" onClick={e=>deleteComment(post._id,comment._id)}>
+                            //     <i className="fas fa-times"></i>
                             // </button>
-                            <button onClick={e=>deleteComment(post._id,comment._id)} class="normalButtonButton"><i class="far fa-trash-alt"></i> Delete</button>
+                            <button onClick={e=>deleteComment(post._id,comment._id)} className="normalButtonButton"><i className="far fa-trash-alt"></i> Delete</button>
                              )}
 
-                        {/* <button class="normalButtonButton"><i class="fas fa-thumbs-up"></i> 12</button>
-                        <button class="normalButtonButton"><i class="fas fa-thumbs-down"></i> 0</button>
-                        <button class="greenButton">Discussion (0)</button>
-                        <button class="normalButtonButton"><i class="far fa-trash-alt"></i> Delete</button> */}
+                        {/* <button className="normalButtonButton"><i className="fas fa-thumbs-up"></i> 12</button>
+                        <button className="normalButtonButton"><i className="fas fa-thumbs-down"></i> 0</button>
+                        <button className="greenButton">Discussion (0)</button>
+                        <button className="normalButtonButton"><i className="far fa-trash-alt"></i> Delete</button> */}
                     </div>
                 </div>
             </div>

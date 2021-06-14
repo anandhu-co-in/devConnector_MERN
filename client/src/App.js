@@ -24,20 +24,16 @@ import Posts from './components/posts/Posts';
 import Post from './components/Post/Post';
 import { GET_POSTS } from './redux/actions/types';
 
-
-
-
 //When you open app, If token exists in locas storage set it to axios headers'  'x-auth-token"
 if(localStorage.token){
-      setAuthToken(localStorage.token)
+      setAuthToken(localStorage.token);
   }
-
 
 const App = () =>{
 
 //using useeffects call load user once the app loads, []at the end makes it work only once in beginning
 useEffect(() => {
-  console.log("APP.js UseEffect Executed")
+  console.log("[USE EFFECT] App.js")
   store.dispatch(loadUser()); //store.dispatch, to dispath action from this page
 }, []);
 

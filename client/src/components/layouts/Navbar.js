@@ -8,29 +8,29 @@ const Navbar = ({auth:{isAuthenticated,loading},logout}) => {
 
     //Links to display when loggedin
     const authLinks=(
-        <div class="nav-links">
+        <div className="nav-links">
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/profiles">Developers</Link>
             <Link to="/posts">Posts</Link>
-            <a onClick={logout} href='#!'><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+            <a onClick={logout} href='#!'><i className="fas fa-sign-out-alt"></i> Sign Out</a>
         </div>
     );
 
     //Links to display when not logged in
     const guestLinks=(
-        <div class="nav-links">
+        <div className="nav-links">
             <Link to="/profiles">Developers</Link>
             <Link to="/register">Register</Link>
-            <Link to='/login'><i class="fas fa-sign-in-alt"></i> Sign In</Link>
+            <Link to='/login'><i className="fas fa-sign-in-alt"></i> Sign In</Link>
         </div>
     )
 
     return (
         <div>
-            <nav class="main-nav">
-                <a class="logo">        
+            <nav className="main-nav">
+                <a className="logo">        
                     <h2>
-                        <i class="fas fa-laptop-code"></i>{' '}
+                        <i className="fas fa-laptop-code"></i>{' '}
                         devConnector
                     </h2>
                 </a>

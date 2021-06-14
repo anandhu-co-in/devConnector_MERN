@@ -42,14 +42,14 @@ const Posts = ({post:{posts,loading},getPosts}) => {
 
             <Alert/>
 
-            <h1><i class="fas fa-pen-nib"></i> POSTS</h1> <br/> <br/>
+            <h1><i className="fas fa-pen-nib"></i> POSTS</h1> <br/> <br/>
 
                 {/* Post form comes here */}
             <CreatePostForm/>
 
 
             {posts.map((post,index)=>
-                <Postitem post={post}/>
+                <Postitem key={index} post={post}/>
             )}
                 
 

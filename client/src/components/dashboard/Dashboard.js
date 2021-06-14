@@ -19,6 +19,7 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
 
 
     useEffect(()=>{
+        console.log("[USE EFFECT] Dashboard")
         getCurrnetProfile();
     },[])
 
@@ -43,10 +44,10 @@ const Dashboard = ({getCurrnetProfile,deleteAccount,auth:{user},profile:{profile
             </Fragment> : <Fragment> 
             
             <h4>You do not have a profile yet!<br/><br/></h4>
-            <Link to ='/create-profile'><button class="greenButton"><i class="fas fa-user-graduate"></i> Create Profile</button></Link>
+            <Link to ='/create-profile'><button className="greenButton"><i className="fas fa-user-graduate"></i> Create Profile</button></Link>
                 
         </Fragment> }
-        <button class="redDeleteButton deleteAccountButton" onClick={()=>{console.log("Delete account cicked"); deleteAccount()}}><i class="far fa-trash-alt"></i> Delete Account </button>
+        <button className="redDeleteButton deleteAccountButton" onClick={()=>{console.log("Delete account cicked"); deleteAccount()}}><i className="far fa-trash-alt"></i> Delete Account </button>
 
     
     </Fragment>

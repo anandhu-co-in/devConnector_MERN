@@ -67,7 +67,7 @@ const Postitem = ({post,auth,likePost,unlikePost,deletePost,showActions}) => {
         <div className="posts-preview-right">
             {post.text}
             <p>
-                Posted on {post.date} 
+                Posted on <Moment format='LL'>{post.date}</Moment>
             </p>
 
             {showActions && <Fragment>

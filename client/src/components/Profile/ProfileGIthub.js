@@ -16,10 +16,10 @@ const ProfileGIthub = ({githubusername,getGitHubRepos,repos}) => {
 
           <Fragment>
 
-              <br/><h2><i class="fab fa-github"></i> Github Repos</h2>
+              <br/><h2><i className="fab fa-github"></i> Github Repos</h2>
               {!repos.length>0 && <><br/><h4>No public repos available for username : {githubusername}</h4></>}
 
-              {repos.map(repo=>
+              {repos.map((repo,index)=>
             
 
             // <div className="repo bg-white p-1 my-1">
@@ -39,12 +39,12 @@ const ProfileGIthub = ({githubusername,getGitHubRepos,repos}) => {
             //   </div>
             //  </div>
 
-            <div class="repo">
-                <div class="repo-left">
+            <div key={index} className="repo">
+                <div className="repo-left">
                     <h3>{repo.full_name}</h3><br/>
                     {repo.description}
                 </div>
-                <div class="repo-right">
+                <div className="repo-right">
                     <div>Starts: {repo.size}</div>
                     <div>Watchers: {repo.watchers_count}</div>
                     <div>Forks: {repo.forks}</div>

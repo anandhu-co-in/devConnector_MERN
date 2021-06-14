@@ -11,7 +11,7 @@ const Experience = ({experience,deleteExperience}) => {
     console.log("EXPERINCE COMPONENET")
     console.log(experience)
 
-    const experiences = experience.map((exp)=>{
+    const experiences = experience.map((exp,key)=>{
 
         return(
         // <tr key={exp._id}>
@@ -35,7 +35,7 @@ const Experience = ({experience,deleteExperience}) => {
 
         // </tr>
 
-        <tr>
+        <tr key={key}>
             <td className="column1">{exp.company}</td>
             <td className="column2">{exp.title}</td>
             <td className="column3">

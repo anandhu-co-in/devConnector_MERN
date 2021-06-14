@@ -8,7 +8,7 @@ import {deleteEducation} from '../../redux/actions/profile';
 
 const Education = ({education,deleteEducation}) => {
 
-    const experiences = education.map((edu)=>{
+    const experiences = education.map((edu,key)=>{
 
         return(
         // <tr key={edu._id}>
@@ -31,7 +31,7 @@ const Education = ({education,deleteEducation}) => {
 
         // </tr>
 
-        <tr>
+        <tr key={key}>
             <td className="column1">{edu.school}</td>
             <td className="column2">{edu.degree}</td>
             <td className="column3">
@@ -58,11 +58,11 @@ const Education = ({education,deleteEducation}) => {
         <h3>Education Details</h3>
                     <table id="tablegeleral">
                         <thead>
-                            <tr class="table100-head">
-                                <th class="column1">School</th>
-                                <th class="column2">Degree</th>
-                                <th class="column3">Years</th>
-                                <th class="column4">Options</th>
+                            <tr className="table100-head">
+                                <th className="column1">School</th>
+                                <th className="column2">Degree</th>
+                                <th className="column3">Years</th>
+                                <th className="column4">Options</th>
                             </tr>
                         </thead>
 

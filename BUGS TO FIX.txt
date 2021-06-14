@@ -3,16 +3,16 @@
 //List of issues that should be fixed before deployment : -
 
 
-1. Layout issues with the Experience and Education tables in dashboard, make it look awesome
-2. Issue when navigating directly to edit profile
+1. Layout issues with the Experience and Education tables in dashboard, make it look awesome[MADE IT BETTER]
+2. Issue when navigating directly to edit profile [FIXED?]
 3. Spinnner issue when loging out and loging in without refreshing browser
-4. The date shown in the profile display is not correct, for education and Experience
-5. When long description added for edu and exp, messes up the CSS
+4. The date shown in the profile display is not correct, for education and Experience [FIXED]
+5. When long description added for edu and exp, messes up the CSS [FIXED]
 6. Github API not working after sometime [FIXED]
 7. Look into the security defect brad is expalning at lession 6.. Fix it if it matter
-8. In posts page display the date in correct format YYYY/MM/DD, as it was showing invlaid date when i tried
-9. The post deletion feature is not tested well
-10. There is a serious bug with the Post.js component, if i directly opens a post throught url, i gets logged out,, even if i was already logged in!
+8. In posts page display the date in correct format YYYY/MM/DD, as it was showing invlaid date when i tried [FIXED]
+9. The post deletion feature is not tested well [TESTED]
+10. There is a serious bug with the Post.js component, if i directly opens a post throught url, i gets logged out,, even if i was already logged in! [FIXED ATLAST!, I missed a / in the axios request!]
 11. Bug with single post display, try opening posts from the posts screen, old post flashes,,
 12. [FIXED] The delete button for comments is not properly CSSed! 
 

@@ -17,7 +17,7 @@ export const DashboardActions = () => {
     //   </div>
     // </div>
 
-  <div class="dashboardActions">
+  <div className="dashboardActions">
     <Link to="/edit-profile"><button className="greenButton"><i className="far fa-address-card"></i> Edit Profile</button></Link>
     <Link to="/add-experience"><button className="greenButton"><i className="fas fa-briefcase"></i> Add Experience</button></Link>
     <Link to="/add-education"><button className="greenButton"><i className="fas fa-user-graduate"></i> Add Education</button></Link>

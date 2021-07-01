@@ -14,4 +14,4 @@ Still working on it
 3. Inside it run nunBoth, this will launch both backend server and font end end using concurrently
 
 
-# This is branch has the final code, with the new UI, and this is the one i pushed to heroku
+This is branch has the final code, with the new UI, and this is the one i pushed to heroku

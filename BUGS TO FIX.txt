@@ -16,7 +16,3 @@
 11. Bug with single post display, try opening posts from the posts screen, old post flashes,,
 12. [FIXED] The delete button for comments is not properly CSSed! 
 
-
-Updates :-
-
-1. Betterfy the UI, maybe what about using Boostrap to build a better UI prior deployment??!

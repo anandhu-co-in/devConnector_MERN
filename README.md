@@ -15,3 +15,6 @@ Still working on it
 
 
 This is branch has the final code, with the new UI, and this is the one i pushed to heroku
+
+# Preview 
+<img src='preview.png'>

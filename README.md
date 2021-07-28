@@ -18,3 +18,6 @@ This is branch has the final code, with the new UI, and this is the one i pushed
 
 # Preview 
 <img src='preview.png'>
+
+# Folder Structure
+<img src='overview'>

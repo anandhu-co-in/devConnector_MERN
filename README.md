@@ -1,6 +1,9 @@
 # devConnector_MERN
 
-Click to Visit : - https://lit-wave-98591.herokuapp.com/
+Click to Visit LIVE Hosted Site SITE --> :  https://lit-wave-98591.herokuapp.com/
+
+(Hosted using free tier of heroku, might be slower when launching for the first time if dyno is sleeping. Also if the monthly quota has expired the app wont launch)
+
 
 Repo for my dev connector project (MERN)
 

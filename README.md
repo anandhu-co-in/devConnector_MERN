@@ -20,4 +20,4 @@ This is branch has the final code, with the new UI, and this is the one i pushed
 <img src='preview.png'>
 
 # Folder Structure
-<img src='overview'>
+<img src='overview.png'>

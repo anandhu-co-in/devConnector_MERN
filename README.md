@@ -1,6 +1,6 @@
 # devConnector_MERN
 
-Click to Visit LIVE Hosted Site SITE --> :  https://lit-wave-98591.herokuapp.com/
+Click to Visit LIVE Hosted Site --> :  https://lit-wave-98591.herokuapp.com/
 
 Note:
 

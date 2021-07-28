@@ -11,14 +11,14 @@ const {check,validationResult} = require('express-validator/check');
 const validateToken=require('../../middlewear/validatetoken');
 
 
-//API --> GET auth, Returns user details when requested with a valid token
-
+//API --> GET auth, Returns user details when requested with a valid token (PRIVATE)
+//From Local host http://localhost:3001/api/auth
 
 router.get("/",validateToken,async (req,res)=>{
     //after middlewear has validated the jwt, we reach here.
     //send back the user details
     try{
-        const user=await usermodel.findById(req.user.id).select('-password') //Removed password from the document
+        const user=await usermodel.findById(req.user.id).select('-password') //Select is to remove password from the document found, we dont need that field
 
         if(!user){
             return res.status(400).json({msg:"User doesnt exists"});

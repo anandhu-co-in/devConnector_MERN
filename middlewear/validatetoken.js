@@ -15,7 +15,7 @@ function validator(req,res,next){
     //Verify token, if verification fails, will go to catch block
     try{
         const decoded=jwt.verify(token, config.get('jwtSecret'));
-        req.user=decoded.user;
+        req.user=decoded.user;//The token is valie, we got the user info from it, That is just added to the original request
         next();
     }
     catch(err){

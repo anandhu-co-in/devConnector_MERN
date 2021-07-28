@@ -118,7 +118,7 @@ router.post("/",mw,async (req,res)=>{
 
 router.get('/',async (req,res)=>{
     try{
-        const profiles=await profileModel.find().populate('user',['name','avatar']);
+        const profiles=await profileModel.find().populate('user',['name','avatar']); //in the user field, populate users name and avatar document from other collection
         res.json(profiles);
     }
     catch(err){
@@ -381,21 +381,6 @@ router.get('/github/:username',async (req,res)=>{
     }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports=router;

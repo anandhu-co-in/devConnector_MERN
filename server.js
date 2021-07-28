@@ -3,12 +3,17 @@ const express = require("express")
 const path=require('path');
 
 const app=express()
+
+//Call the async function which connects to DataBase
 connectDB()
 
 // app.use(express.json({extended:false}));
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+
+
+//We have to use these two middle wears when using PUT and POST requests
+app.use(express.json()); // express.json() is a built express middleware that convert request body to JSON.
+app.use(express.urlencoded({extended:true})); //just like express.json() converts request body to JSON, it also carries out some other functionalities like: converting form-data to JSON etc.
 
 // app.get("/",(req,res)=>{
 //     res.send("worked and worked");

@@ -6,9 +6,15 @@ const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const config=require('config');
 
+
+//the express validator is used to create middlewears to validate the data
+//if any errors with the name, email etc that is returned
 const {check,validationResult} = require("express-validator");
 
 
+
+// PUBLIC API TO REGISTER USER 
+// Local URL http://localhost:3001/api/users
 
 mw=[
     check('name','Name is required').not().notEmpty(),
@@ -23,7 +29,7 @@ router.post("/",mw, async (req,res)=>{
 
     //If express validator mw generated any errors, send the errors as reponse and also status code 400
     if(!errors.isEmpty()){
-        return res.status(400).json({errors:errors.array()});
+        return res.status(400).json({errors:errors.array()});   // error arry is like [{},{}..], we make it {"errors":[{},{}..]}
     }   
 
     const {name,email,password}=req.body
@@ -55,7 +61,7 @@ router.post("/",mw, async (req,res)=>{
         password:encryptedpassword //Here like this because,both sides diff name
     })
 
-    //save user
+    //save user - So, if user collection doesnt exist, may be when you run the first time, is is created in the Atlast
 
     await user.save() //anything that returns promise use await
 
@@ -69,7 +75,7 @@ router.post("/",mw, async (req,res)=>{
         }
     }
 
-    //Create and sign the token
+    //Create and sign the token, and return it as API response
     jwt.sign(
         payload,
         config.get('jwtSecret'),
@@ -93,6 +99,3 @@ router.post("/",mw, async (req,res)=>{
 
 module.exports=router;
 
-
-//the express validator is used to create middlewears to validate the data
-//if any errors with the name, email etc that is returned

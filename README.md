@@ -2,12 +2,18 @@
 
 Click to Visit LIVE Hosted Site SITE --> :  https://lit-wave-98591.herokuapp.com/
 
-(Hosted using free tier of heroku, might be slower when launching for the first time if dyno is sleeping. Also if the monthly quota has expired the app wont launch)
+Note:
+
+Hosted using free tier of heroku, might be slower when launching for the first time if dyno is sleeping. Also if the monthly quota has expired the app wont launch
+
+Not Mobile responsive as of now, the UI will break on smaller screens
 
 
-Repo for my dev connector project (MERN)
+# Preview 
+<img src='preview.png'>
 
-Still working on it
+# Folder Structure
+<img src='overview.png'>
 
 
 # Steps to setup : -
@@ -18,9 +24,3 @@ Still working on it
 
 
 This is branch has the final code, with the new UI, and this is the one i pushed to heroku
-
-# Preview 
-<img src='preview.png'>
-
-# Folder Structure
-<img src='overview.png'>
